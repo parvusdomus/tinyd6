@@ -20,14 +20,48 @@ export async function RollTest({
 
     // Execute the roll
     let result = await new Roll(rollForumla, {}).evaluate({'async': true})
-    let renderedRoll = await renderTemplate("systems/tinyd6/templates/partials/test-result.hbs", { rollResult: result });
+    let additional = await new Roll("1d6", {}).evaluate({'async': true})
+    let number = Number(result.terms[0].number)
+    let critEnabled = game.settings.get('tinyd6', 'enableCriticalHits');
+    let botchEnabled = game.settings.get('tinyd6', 'enableCriticalFailure');
+    let sixes=0;
+    let ones= 0;
+    let bCrit=false;
+    let bBotch=false;
+    //Evaluate Crit
+    for (let i = 0; i < number; i++) {
+        if (result.terms[0].results[i].result == 6){sixes++}
+        if (result.terms[0].results[i].result == 1){ones++}
+    }
+    if (number >= 2){
+        if (sixes==number){
+            bCrit=true;
+        }
+    }
+    else{
+        if (sixes==number){
+            if (additional._total == 6){
+                bCrit=true;
+            }
+        }        
+
+    }
+    if (ones==number){
+        bBotch=true;
+    }
+    let renderedRoll = await renderTemplate("systems/tinyd6/templates/partials/test-result.hbs", { 
+        rollResult: result, 
+        nDice: number, 
+        critEnabled: critEnabled, 
+        botchEnabled: botchEnabled,
+        bCrit:bCrit, 
+        bBotch:bBotch});
     // let renderedRoll = await result.render({ result: result, template: "systems/tinyd6/templates/partials/test-result.hbs" });
 
     const chatData = {
         speaker: ChatMessage.getSpeaker(),
         content: renderedRoll
     };
-
     result.toMessage(chatData);
 }
 

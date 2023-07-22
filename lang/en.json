@@ -41,7 +41,11 @@
       },
       "enableCriticalHits": {
         "name": "Enable Critical Hits",
-        "hint": "Mark Test as 'Critical Success' when all dice ore 5 or 6."
+        "hint": "Mark Test as 'Critical Success' when all dice are 6."
+      },
+      "enableCriticalFailure": {
+        "name": "Enable Critical Failures",
+        "hint": "Mark Test as 'Critical Failures' when all dice are 1"
       },
       "enableVariableWeaponDamage": {
         "name": "Variable Weapon Damage",
@@ -60,7 +64,11 @@
       "roll": {
         "disadvantage": "Disadvantage",
         "standard": "Standard Test",
-        "advantage": "Advantage"
+        "advantage": "Advantage",
+        "Success": "Success!",
+        "Failure": "Failure",
+        "Critical": "Critical Success!!",
+        "Botch": "Critical Failure!!"
       }
     },
     "sheet": {

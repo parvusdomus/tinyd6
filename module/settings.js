@@ -63,7 +63,16 @@ export const registerGameSettings = function () {
         name: game.i18n.localize("tinyd6.settings.enableCriticalHits.name"),
         hint:  game.i18n.localize("tinyd6.settings.enableCriticalHits.hint"),
         scope: "world",
-        config: false,
+        config: true,
+        default: false,
+        type: Boolean
+    });
+
+    game.settings.register(systemName, "enableCriticalFailure", {
+        name: game.i18n.localize("tinyd6.settings.enableCriticalFailure.name"),
+        hint:  game.i18n.localize("tinyd6.settings.enableCriticalFailure.hint"),
+        scope: "world",
+        config: true,
         default: false,
         type: Boolean
     });

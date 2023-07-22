@@ -40,8 +40,12 @@
         "hint": "Cuando se usan puntos de desgaste objetos, los registra en los objetos de los personajes."
       },
       "enableCriticalHits": {
-        "name": "Activar Golpes Críticos",
-        "hint": "Marca una prueba como 'Éxito Crítico' cuando todos los dados son 5 o 6."
+        "name": "Activar Éxitos Críticos",
+        "hint": "Marca una prueba como 'Éxito Crítico' cuando todos los dados son 6."
+      },
+      "enableCriticalFailure": {
+        "name": "Activar Fallos Críticos",
+        "hint": "Marca una prueba como 'Fallo Crítico' cuando todos los dados son 1."
       },
       "enableVariableWeaponDamage": {
         "name": "Daño de Arma Variable",
@@ -60,7 +64,11 @@
       "roll": {
         "disadvantage": "Desventaja",
         "standard": "Prueba normal",
-        "advantage": "Ventaja"
+        "advantage": "Ventaja",
+        "Success": "¡Éxito!",
+        "Failure": "Fallo",
+        "Critical": "¡¡Éxito Crítico!!",
+        "Botch": "¡¡Fallo Crítico!!"
       }
     },
     "sheet": {
