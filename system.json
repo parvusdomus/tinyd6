@@ -1,0 +1,53 @@
+{
+    "id": "tinyd6",
+    "title": "TinyD6",
+    "description": "Alternative Game System for TinyD6. (Based on Tricube Tales System)",
+    "version": "0.0.1",
+    "authors": [
+      {
+        "name": "ParvusDomus",
+        "flags": {}
+      }
+    ],
+    "compatibility": {
+      "minimum": "11",
+      "verified": "11"
+    },
+    "esmodules": [
+      "tinyd6.js"
+    ],
+    "styles": [
+      "style/tinyd6.css"
+    ],
+    "media": [
+      {
+        "type": "setup",
+        "url": "systems/tinyd6/style/images/Tiny_Logo.png",
+        "thumbnail": "systems/tinyd6/style/images/Tiny_Logo.png"
+      }
+    ],
+  
+    "languages": [
+      {
+        "lang": "es",
+        "name": "Spanish",
+        "path": "lang/es.json",
+        "flags": {}
+      },
+      {
+        "lang": "en",
+        "name": "English",
+        "path": "lang/en.json",
+        "flags": {}
+      }
+    ],
+    "initiative": "@initiative",
+    "gridDistance": 2,
+    "gridUnits": "m",
+    "primaryTokenAttribute": "resources.resolve",
+    "secondaryTokenAttribute": "resources.karma",
+    "url": "https://github.com/parvusdomus/tinyd6",
+    "manifest": "https://github.com/parvusdomus/tiny/releases/latest/download/system.json",
+    "download": "https://github.com/parvusdomus/tiny/releases/latest/download/tiny.zip",
+    "license": "LICENSE.txt"
+  }

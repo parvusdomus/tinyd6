@@ -1,2 +1,3 @@
-# tinyd6
-Alternative tinyd6 system based in tricube tales system
+# tricube
+Alternative Tinyd6 system based on Tricube Tales system
+
