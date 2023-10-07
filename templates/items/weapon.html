@@ -1,0 +1,36 @@
+<form class="{{cssClass}} tinyd6" autocomplete="off">
+    <div class="item-name">
+        <table>
+            <tr>
+                <td>
+                    <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Rasgo'/>
+                </td>
+                <td>
+                    <h2><input name="name" type="text" value="{{item.name}}" placeholder='Trait' onClick="this.select();"/></h2>
+                </td>
+            </tr>
+        </table>   
+    </div>
+    <table>
+        <tr>
+            <td><label>Weapon Type</label></td>
+            <td>
+                <select name="system.weapon_type" data-dtype="String">
+                    {{#select item.system.weapon_type}}
+                      <option value="light-melee">light-melee</option>
+                      <option value="heavy-melee">heavy-melee</option>
+                      <option value="light-ranged">light-ranged</option>
+                      <option value="heavy-ranged">heavy-ranged</option>
+                    {{/select}}
+                </select>
+            </td>
+            <td><label>Damage</label></td>
+            <td><input class="mod_input" name="system.damage" type="number" maxlength="2" size="2" value="{{item.system.damage}}" data-dtype="Number"/></td>
+            <td><label>Dominated</label></td>
+            <td><input type="checkbox" {{checked item.system.dominated}} name="system.archetype"></td>
+        </tr>
+    </table>
+    <div class="desc">
+        {{editor item.system.description target="system.description" button=true owner=owner editable=true}}
+    </div>
+</form>

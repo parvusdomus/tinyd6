@@ -317,7 +317,7 @@
 }
 
 .archetype input {
-    width: 155%;
+    width: 250%;
     border-radius: 16px;
     text-align: center;
     background-color: var(--input-bg-color);
@@ -374,6 +374,13 @@
     color: var(--list-text-color);
 }
 
+.item-list img{
+    border-radius: 16px;
+    width: 40px;
+    height: 40px;
+    background-color: #555353;
+}
+
 .item-controls {
     align-items: right;
     text-align: right;
@@ -391,6 +398,48 @@
     font-family: var(--font-name);
     text-align: center;
     border-bottom: none;
+}
+
+.item-name{
+    display: inline-block;
+}
+
+.item-name table{
+    background: none;
+    width: 115%;
+    border: none;
+}
+
+.item-name img{
+    border-radius: 16px;
+    width: 75px;
+    height: 75px;
+    background-color: #555353;
+}
+
+.competence table{
+    background: none;
+    width: 90%;
+    border: none;
+}
+
+.resource table{
+    background: none;
+    width: 90%;
+    border: none;
+}
+
+.resources {
+    display: flex;
+    vertical-align: middle;
+    flex-wrap: wrap;
+}
+.resources a{
+    padding: 3px;
+}
+
+.mod_input{
+    width: 30%;
 }
 
 .dice-roll .dice-tooltip {

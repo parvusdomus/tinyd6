@@ -10,7 +10,7 @@ import tinyChat from "./modules/chat.js";
 
 
 Hooks.once("init", function(){
-  document.getElementById("logo").src = "/systems/tinyd6/style/images/Tiny_Logo.png";
+  document.getElementById("logo").src = "/systems/tinyd6/style/images/tinyd6.webp";
   console.log("test | INITIALIZING TINY CHARACTER SHEETS...");
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("tinyd6", TINY_CHAR_SHEET, {
@@ -25,7 +25,7 @@ Hooks.once("init", function(){
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("tinyd6", TINY_ITEM_SHEET,{
     makeDefault: true,
-    types: ['perk','quirk','affliction','knack']
+    types: ['trait','perk','quirk','affliction','knack','weapon']
   });
   preloadHandlebarsTemplates();
 
@@ -43,55 +43,16 @@ Hooks.once("init", function(){
     type: Object
   });
 
-  game.settings.register("tinyd6", "enableRank", {
-    name: game.i18n.localize("TRI.config.enableRankName"),
-    hint: game.i18n.localize("TRI.config.enableRankHint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    requiresReload: true,
-    config: true
-  });
 
-  game.settings.register("tinyd6", "enableStyles", {
-    name: game.i18n.localize("TRI.config.enableStylesName"),
-    hint: game.i18n.localize("TRI.config.enableStylesHint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    requiresReload: true,
-    config: true
-  });
-
-  game.settings.register("tinyd6", "enableKnacks", {
-    name: game.i18n.localize("TRI.config.enableKnacksName"),
-    hint: game.i18n.localize("TRI.config.enableKnacksHint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    requiresReload: true,
-    config: true
-  });
-
-  game.settings.register("tinyd6", "enableSubTraits", {
-    name: game.i18n.localize("TRI.config.enableSubTraitsName"),
-    hint: game.i18n.localize("TRI.config.enableSubTraitsHint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    requiresReload: true,
-    config: true
-  });
-
-  game.settings.register("tinyd6", "enableSubStyles", {
-    name: game.i18n.localize("TRI.config.enableSubStylesName"),
-    hint: game.i18n.localize("TRI.config.enableSubStylesHint"),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    requiresReload: true,
-    config: true
-  });
+//  game.settings.register("tinyd6", "enableSubStyles", {
+//    name: game.i18n.localize("TRI.config.enableSubStylesName"),
+//    hint: game.i18n.localize("TRI.config.enableSubStylesHint"),
+//    scope: "world",
+//    type: Boolean,
+//    default: false,
+//    requiresReload: true,
+//    config: true
+//  });
 
   game.settings.register('tinyd6', 'bgImage', {
     name: game.i18n.localize("TRI.config.bgImageName"),

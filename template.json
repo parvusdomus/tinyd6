@@ -6,50 +6,24 @@
             "Challenge"
         ],
         "Player": {
+            "archetype":"",
+            "bussiness": "",
+            "belief": "",
             "resources":{
-                "resolve": {
-                    "value": 3,
-                    "min": 0,
-                    "max": 3
-                },
-                "karma": {
-                    "value": 3,
-                    "min": 0,
-                    "max": 3
-                },
-                "afflictions": {
+                "hitpoints": {
                     "value": 0,
                     "min": 0,
-                    "max": 3
+                    "max": 6
                 }
             },
-            "rank": 1,
-            "trait": "Agile",
-            "combat": "Ranged",
-            "subtrait": {
-                "dexterity": false,
-                "reflexes": false,
-                "stealth": false,
-                "strength": false,
-                "endurance": false,
-                "athletics": false,
-                "intellect": false,
-                "charisma": false,
-                "perception": false
+            "weapon-competences":{
+                "light-melee": false,
+                "heavy-melee": false,
+                "light-ranged": false,
+                "heavy-ranged": false
             },
-            "substyle": {
-                "armed": false,
-                "unarmed": false,
-                "parry": false,
-                "shoot": false,
-                "throw": false,
-                "evade": false,
-                "magic": false,
-                "tactics": false,
-                "resist": false
-            },
+            "weapon-dominated":"",
             "initiative": "2d6cs>=5",
-            "concept": "",
             "notes": ""
         },
         "Challenge": {
@@ -69,11 +43,29 @@
     "Item": {
         "types":
         [
+            "trait",
+            "weapon",
             "perk",
             "quirk",
             "affliction",
             "knack"
         ],
+        "trait": {
+            "archetype": false,
+            "modifies_init": 0,
+            "modifies_damage": 0,
+            "modifies_stress": 0,
+            "description": ""
+        },
+        "weapon": {
+            "dominated": false,
+            "weapon_type": "light-melee",
+            "damage": 1,
+            "modifies_init": 0,
+            "modifies_damage": 0,
+            "modifies_stress": 0,
+            "description": ""
+        },
         "perk": {
             "tag": "",
             "bg_color": "#ffffff",

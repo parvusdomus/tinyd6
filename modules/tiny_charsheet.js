@@ -1,13 +1,13 @@
 export default class TINY_CHAR_SHEET extends ActorSheet{
     static get defaultOptions() {
-      let adjusted_height= 500;
-      if (game.settings.get("tinyd6", "enableSubTraits")==true || game.settings.get("tinyd6", "enableSubStyles")==true){
-        adjusted_height+=130;
-      }
+      let adjusted_height= 650;
+      //if (game.settings.get("tinyd6", "enableSubTraits")==true || game.settings.get("tinyd6", "enableSubStyles")==true){
+      //  adjusted_height+=130;
+      //}
       return mergeObject(super.defaultOptions, {
           classes: ["tinyd6", "sheet", "actor"],
           template: "systems/tinyd6/templates/actors/character.html",
-          width: 600,
+          width: 700,
           //height: 620,
           height: adjusted_height,
           tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "general" }],
@@ -19,68 +19,57 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const data = super.getData();
       if (this.actor.type == 'Player') {
         this._prepareCharacterItems(data);
-        this._updateInitiative(data);
+        //this._updateInitiative(data);
       }
       return data;
     }
 
     _prepareCharacterItems(sheetData){
-      let nAfflictions = 0;
       const actorData = sheetData;
-      const Perks = [];
-		  const Quirks = [];
-		  const Afflictions = [];
-      const Knacks = [];
+      const Traits = [];
+      const Archetype_Traits = [];
+      const Weapons = [];
       for (let i of sheetData.items){
         switch (i.type){
-				  case 'perk':
+				  case 'trait':
 				  {
-					  Perks.push(i);
-					  break;
+            if (i.system.archetype == true){
+              Archetype_Traits.push(i);
+					    break;
+            }
+            else{
+              Traits.push(i);
+              break;
+            }
+					  
 				  }
-          case 'quirk':
-          {
-            Quirks.push(i);
-            break;
-          }
-          case 'affliction':
-          {
-            nAfflictions++;
-            Afflictions.push(i);
-            break;
-          }
-          case 'knack':
-          {
-            Knacks.push(i);
-            break;
-          }
+          case 'weapon':
+				  {
+              Weapons.push(i);
+					    break;			  
+				  }
         }
       }
-      actorData.Perks = Perks;
-      actorData.Quirks = Quirks;
-      actorData.Afflictions = Afflictions;
-      actorData.Knacks = Knacks;
-      this.actor.update ({ 'system.resources.afflictions.value': nAfflictions });
+      actorData.Traits = Traits;
+      actorData.Archetype_Traits = Archetype_Traits;
+      actorData.Weapons = Weapons;
       actorData.settings = {
-        enableKnacks: game.settings.get("tinyd6", "enableKnacks"),
-        enableSubTraits: game.settings.get("tinyd6", "enableSubTraits"),
-        enableSubStyles: game.settings.get("tinyd6", "enableSubStyles"),
-        enableStyles: game.settings.get("tinyd6", "enableStyles")
+        
       }
       actorData.isGM = game.user.isGM;
 
     }
 
-    _updateInitiative(sheetData){
-      let initiative=""
-      if (sheetData.actor.system.trait=="Agile" || sheetData.actor.system.subtrait.reflexes){
-        initiative="3d6cs>=5"
-      }
-      else{
-        initiative="2d6cs>=5"
-      }
-      this.actor.update ({ 'system.initiative': initiative });
-    }
+    //_updateInitiative(sheetData){
+    //  let initiative=""
+    //  if (sheetData.actor.system.trait=="Agile" || sheetData.actor.system.subtrait.reflexes){
+    //    initiative="3d6cs>=5"
+    //  }
+    //  else{
+    //    initiative="2d6cs>=5"
+    //  }
+    //  this.actor.update ({ 'system.initiative': initiative });
+    //}
 
 
     activateListeners(html)
@@ -103,6 +92,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
       html.find ('a.subtrait-toggle').click(this._onSubTraitToggle.bind(this));
       html.find ('a.substyle-toggle').click(this._onSubStyleToggle.bind(this));
+      html.find ('a.resource-change').click(this._onResourceChange.bind(this));
     }
 
     _onItemCreate(event) {
@@ -293,6 +283,26 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         if (resolve > max_resolve){resolve=max_resolve}
         await this.actor.update ({ 'system.resources.resolve.value': resolve });
       } 
+      return;
+    }
+
+    async _onResourceChange(event, data)
+    {
+      event.preventDefault();
+      const dataset = event.currentTarget.dataset;
+      let value=0;
+      if (Number(dataset.number)==0){
+        if (Number(this.actor.system.resources[dataset.resource].value)==0){
+          value=1;
+        }
+        else{
+          value=0;
+        }
+      }
+      else{
+        value=Number(dataset.number)+1
+      }
+      await this.actor.update ({ 'system.resources.hitpoints.value': value });
       return;
     }
 
