@@ -1,0 +1,96 @@
+<table class="item-list">
+    <tr>
+        <th></th>
+        <th><h3 class="item-header"><label>{{localize "TINY.ui.weapons"}}</label></h3></th>
+        <th></th>
+        {{#each Weapons as |item id|}}
+        <tr data-item-id="{{item._id}}">
+            <td>
+                <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Arma'/>
+            </td>
+            <td>
+                <label>{{item.name}}&nbsp;</label>
+                <label>&nbsp;{{item.system.damage}}&nbsp;</label>
+                <i class="fa-solid fa-heart-crack"></i>
+                {{#if (eq item.system.dominated true)}}
+                    <i class="fa-solid fa-award" style="color: green;"></i>
+                {{else}}
+                    {{#if (eq item.system.competent true)}}
+                        <i class="fa-solid fa-check"  style="color: blue;"></i>
+                    {{else}}
+                        <i class="fa-solid fa-xmark"  style="color: red;"></i>
+                    {{/if}}
+                {{/if}}
+            </td>
+            <td class="item-controls">
+                <a class="item-equip" data-id="{{item._id}}">
+                    {{#if (eq item.system.equipped true)}}
+                        <i class="fa-regular fa-hand" style="color: green;"></i>
+                    {{else}}
+                        <i class="fa-regular fa-hand" style="color: red;"></i>
+                    {{/if}}
+                </a>
+                <a class="item-show" data-id="{{item._id}}"><i class="fas fa-eye"></i></a>
+                <a class="item-edit" data-id="{{item._id}}"><i class="fas fa-edit"></i></a>
+                <a class="item-delete" data-id="{{item._id}}"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+    {{/each}}
+    </tr>
+    <tr>
+        <th></th>
+        <th><h3 class="item-header"><label>{{localize "TINY.ui.armor"}}</label></h3></th>
+        <th></th>
+        {{#each Armors as |item id|}}
+        <tr data-item-id="{{item._id}}">
+            <td>
+                <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Arma'/>
+            </td>
+            <td>
+                <label>{{item.name}}&nbsp;</label>
+            </td>
+            <td class="item-controls">
+                <a class="item-equip" data-id="{{item._id}}">
+                    {{#if (eq item.system.equipped true)}}
+                        <i class="fa-regular fa-hand" style="color: green;"></i>
+                    {{else}}
+                        <i class="fa-regular fa-hand" style="color: red;"></i>
+                    {{/if}}
+                </a>
+                <a class="item-show" data-id="{{item._id}}"><i class="fas fa-eye"></i></a>
+                <a class="item-edit" data-id="{{item._id}}"><i class="fas fa-edit"></i></a>
+                <a class="item-delete" data-id="{{item._id}}"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+    {{/each}}
+    </tr>
+    <tr>
+        <th></th>
+        <th><h3 class="item-header"><label>{{localize "TINY.ui.items"}}</label></h3></th>
+        <th></th>
+        {{#each Items as |item id|}}
+        <tr data-item-id="{{item._id}}">
+            <td>
+                <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Arma'/>
+            </td>
+            <td>
+                <label>{{item.name}}&nbsp;</label>
+            </td>
+            <td class="item-controls">
+                <a class="item-equip" data-id="{{item._id}}">
+                    {{#if (eq item.system.equipped true)}}
+                        <i class="fa-regular fa-hand" style="color: green;"></i>
+                    {{else}}
+                        <i class="fa-regular fa-hand" style="color: red;"></i>
+                    {{/if}}
+                </a>
+                <a class="item-show" data-id="{{item._id}}"><i class="fas fa-eye"></i></a>
+                <a class="item-edit" data-id="{{item._id}}"><i class="fas fa-edit"></i></a>
+                <a class="item-delete" data-id="{{item._id}}"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+    {{/each}}
+    </tr>
+    
+
+</table>

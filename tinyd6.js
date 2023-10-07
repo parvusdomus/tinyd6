@@ -25,7 +25,7 @@ Hooks.once("init", function(){
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("tinyd6", TINY_ITEM_SHEET,{
     makeDefault: true,
-    types: ['trait','perk','quirk','affliction','knack','weapon']
+    types: ['trait','weapon','item','armor']
   });
   preloadHandlebarsTemplates();
 

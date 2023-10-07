@@ -8,19 +8,27 @@
         <table>
           <tr>
             <td><label>{{localize "TINY.competence.light_melee"}}</label></td>
-            <td><input type="checkbox" {{checked actor.system.weapon-competences.light-melee}} name="system.weapon-competences.light-melee"></td>
+            <td>
+              <input type="checkbox" {{checked actor.system.competences.lightmelee}} name="system.competences.lightmelee">
+            </td>
             <td><label>{{localize "TINY.competence.heavy_melee"}}</label></td>
-            <td><input type="checkbox" {{checked actor.system.weapon-competences.heavy-melee}} name="system.weapon-competences.heavy-melee"></td>
+            <td>
+              <input type="checkbox" {{checked actor.system.competences.heavymelee}} name="system.competences.heavymelee">
+            </td>
             <td><label>{{localize "TINY.competence.light_ranged"}}</label></td>
-            <td><input type="checkbox" {{checked actor.system.weapon-competences.light-ranged}} name="system.weapon-competences.light-ranged"></td>
+            <td>
+              <input type="checkbox" {{checked actor.system.competences.lightranged}} name="system.competences.lightranged">
+            </td>
             <td><label>{{localize "TINY.competence.heavy_ranged"}}</label></td>
-            <td><input type="checkbox" {{checked actor.system.weapon-competences.heavy-ranged}} name="system.weapon-competences.heavy-ranged"></td>
+            <td>
+              <input type="checkbox" {{checked actor.system.competences.heavyranged}} name="system.competences.heavyranged">
+            </td>
           </tr>
         </table>
       </div>
       <div class="dominated">
           <h2><label>{{localize "TINY.dominate.weapon"}}</label></h2>
-          <input name="system.weapon-dominated" type="text" value="{{actor.system.weapon-dominated}}" placeholder='{{localize "TINY.dominate.weapon"}}' data-dtype="String"/>
+          <input name="system.weapondominated" type="text" value="{{actor.system.weapondominated}}" placeholder='{{localize "TINY.dominate.weapon"}}' data-dtype="String"/>
       </div>
       <h2 class="resource">
         <table>
@@ -50,6 +58,7 @@
     <section class="right-section">
         <nav class="sheet-tabs tabs" data-group="primary">
           <a class="item" data-tab="general">{{localize "TINY.ui.tab.general"}}</a>
+          <a class="item" data-tab="inventory">{{localize "TINY.ui.tab.inventory"}}</a>
           <a class="item" data-tab="bio">{{localize "TINY.ui.tab.notes"}}</a>
           
         </nav>
@@ -62,6 +71,10 @@
           {{!-- Notes Tab --}}
           <div class="tab bio" data-group="primary" data-tab="bio">
             {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
+          </div>
+          {{!-- Inventory Tab --}}
+          <div class="tab inventory" data-group="primary" data-tab="inventory">
+            {{> "/systems/tinyd6/templates/actors/parts/inventory.html"}}
           </div>
         </section>
     </section>

@@ -15,19 +15,19 @@
         <tr>
             <td><label>Weapon Type</label></td>
             <td>
-                <select name="system.weapon_type" data-dtype="String">
-                    {{#select item.system.weapon_type}}
-                      <option value="light-melee">light-melee</option>
-                      <option value="heavy-melee">heavy-melee</option>
-                      <option value="light-ranged">light-ranged</option>
-                      <option value="heavy-ranged">heavy-ranged</option>
+                <select name="system.weapontype" data-dtype="String">
+                    {{#select item.system.weapontype}}
+                      <option value="lightmelee">{{localize "TINY.competence.light_melee_full"}}</option>
+                      <option value="heavymelee">{{localize "TINY.competence.heavy_melee_full"}}</option>
+                      <option value="lightranged">{{localize "TINY.competence.light_ranged_full"}}</option>
+                      <option value="heavyranged">{{localize "TINY.competence.heavy_ranged_full"}}</option>
                     {{/select}}
                 </select>
             </td>
             <td><label>Damage</label></td>
             <td><input class="mod_input" name="system.damage" type="number" maxlength="2" size="2" value="{{item.system.damage}}" data-dtype="Number"/></td>
             <td><label>Dominated</label></td>
-            <td><input type="checkbox" {{checked item.system.dominated}} name="system.archetype"></td>
+            <td><input type="checkbox" {{checked item.system.dominated}} name="system.dominated"></td>
         </tr>
     </table>
     <div class="desc">
