@@ -129,6 +129,26 @@ Hooks.once("init", function(){
     default: 'Dominican',
   });
 
+  game.settings.register('tinyd6', 'buttonHeaderBgColor', {
+    name: game.i18n.localize("TINY.config.buttonHeaderBgColorName"),
+    hint: game.i18n.localize("TINY.config.buttonHeaderBgColorHint"),
+    scope: 'world',
+    requiresReload: true,
+    config: true,
+    type: String,
+    default: '#ffffff',
+  });
+
+  game.settings.register('tinyd6', 'buttonHeaderFontColor', {
+    name: game.i18n.localize("TINY.config.buttonHeaderFontColorName"),
+    hint: game.i18n.localize("TINY.config.buttonHeaderFontColorHint"),
+    scope: 'world',
+    requiresReload: true,
+    config: true,
+    type: String,
+    default: '#000000',
+  }); 
+
   game.settings.register('tinyd6', 'listHeaderBgColor', {
       name: game.i18n.localize("TRI.config.listHeaderBgColorName"),
       hint: game.i18n.localize("TRI.config.listHeaderBgColorHint"),
@@ -317,6 +337,10 @@ Hooks.once("init", function(){
   root.style.setProperty('--tab-bg-color-hover',tabHoverBgColor)
   let tabHoverFontColor=game.settings.get ("tinyd6", "tabHoverFontColor")
   root.style.setProperty('--tab-text-color-hover',tabHoverFontColor)
+  let buttonHeaderBgColor=game.settings.get ("tinyd6", "buttonHeaderBgColor")
+  root.style.setProperty('--button-bg-color',buttonHeaderBgColor)
+  let buttonHeaderFontColor=game.settings.get ("tinyd6", "buttonHeaderFontColor")
+  root.style.setProperty('--button-font-color',buttonHeaderFontColor)
 
   //ACTIVATE FLOATING DICE ROLLER
 
@@ -384,6 +408,11 @@ Hooks.on('renderSettingsConfig', (app, el, data) => {
     .append(`<input type="color" value="${game.settings.get('tinyd6','tabHoverBgColor')}" data-edit="tinyd6.tabHoverBgColor">`)
   el.find('[name="tinyd6.tabHoverFontColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','tabHoverFontColor')}" data-edit="tinyd6.tabHoverFontColor">`)
+
+  el.find('[name="tinyd6.buttonHeaderBgColor"]').parent()
+    .append(`<input type="color" value="${game.settings.get('tinyd6','buttonHeaderBgColor')}" data-edit="tinyd6.buttonHeaderBgColor">`)
+  el.find('[name="tinyd6.buttonHeaderFontColor"]').parent()
+    .append(`<input type="color" value="${game.settings.get('tinyd6','buttonHeaderFontColor')}" data-edit="tinyd6.buttonHeaderFontColor">`)
 });
 
 Hooks.on('renderChatLog', (app, html, data) => tinyChat.chatListeners(html))

@@ -32,6 +32,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const Items = [];
       const Armors = [];
       const EquippedWeapons = [];
+      const EquippedArmors =[];
       for (let i of sheetData.items){
         switch (i.type){
 				  case 'trait':
@@ -55,6 +56,28 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
             else{
               item.update ({'system.competent': false})
             }
+            switch (item.system.weapontype){
+              case 'lightmelee':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.light_melee")});
+                break;
+              }
+              case 'heavymelee':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.heavy_melee")});
+                break;
+              }
+              case 'lightranged':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.light_ranged")});
+                break;
+              }
+              case 'heavyranged':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.heavy_ranged")});
+                break;
+              }
+            }
             Weapons.push(i);
             if (i.system.equipped==true){
               EquippedWeapons.push(i);
@@ -68,7 +91,31 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
           }
           case 'armor':
           {
+            const item = this.actor.items.get(i._id);
+            switch (item.system.armortype){
+              case 'light':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.light")});
+                break;
+              }
+              case 'medium':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.medium")});
+                break;
+              }
+              case 'heavy':
+              {
+                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.heavy")});
+                break;
+              }
+            }
             Armors.push(i);
+            let armorhitpoints=0;
+            if (i.system.equipped==true){
+              armorhitpoints=item.system.extralife;
+              EquippedArmors.push(i);
+            }
+            this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
             break;			  
           }
           
@@ -78,8 +125,11 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       actorData.Archetype_Traits = Archetype_Traits;
       actorData.Weapons = Weapons;
       actorData.EquippedWeapons = EquippedWeapons;
+      actorData.EquippedArmors = EquippedArmors;
       actorData.Items = Items;
       actorData.Armors = Armors;
+      let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(this.actor.system.resources.armorhitpoints.max)+Number(this.actor.system.resources.extrahitpoints.max)
+      this.actor.update ({'system.resources.totalhitpoints.max': totalhitpoints})
       actorData.settings = {
         
       }
@@ -109,6 +159,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
 		  html.find('a.item-delete').click(this._onDeleteClick.bind(this));
       html.find('a.resource-change').click(this._onResourceChange.bind(this));
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
+      html.find('a.regular-roll').click(this._onRegularRoll.bind(this));
     }
 
     _onItemCreate(event) {
@@ -201,7 +252,13 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       else{
         value=Number(dataset.number)+1
       }
-      await this.actor.update ({ 'system.resources.hitpoints.value': value });
+      switch (dataset.resource){
+        case 'totalhitpoints':
+        {
+          this.actor.update ({'system.resources.totalhitpoints.value': value});
+          break;
+        }
+      }
       return;
     }
  
@@ -209,6 +266,12 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
     {
       event.preventDefault();
       DiceRollV2(event);
+      return;
+    }
+
+    async _onRegularRoll(event)
+    {
+      console.log ("ON REGULAR ROLL")
       return;
     }
   

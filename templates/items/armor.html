@@ -12,7 +12,20 @@
         </table>   
     </div>
     <table>
-
+        <tr>
+            <td><label>{{localize "TINY.ui.type"}}</label></td>
+            <td>
+                <select name="system.armortype" data-dtype="String">
+                    {{#select item.system.armortype}}
+                      <option value="light">{{localize "TINY.competence.light_full"}}</option>
+                      <option value="medium">{{localize "TINY.competence.medium_full"}}</option>
+                      <option value="heavy">{{localize "TINY.competence.heavy_full"}}</option>
+                    {{/select}}
+                </select>
+            </td>
+            <td><label>{{localize "TINY.ui.value"}}</label></td>
+            <td><input class="mod_input" name="system.extralife" type="number" maxlength="2" size="2" value="{{item.system.extralife}}" data-dtype="Number"/></td>
+         </tr>
     </table>
     <div class="desc">
         {{editor item.system.description target="system.description" button=true owner=owner editable=true}}

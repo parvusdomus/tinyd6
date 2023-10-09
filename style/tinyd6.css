@@ -200,6 +200,7 @@
     width: 40%;
     max-height: 100%;
     text-align: center;
+    padding: 10px;
 }
 
 .left-section h2{
@@ -208,15 +209,21 @@
     border-bottom: none;
 }
 
+.left-section h1{
+    font-family: var(--font-name);
+    color: var(--button-font-color);
+    background-color: var(--button-bg-color);
+    border-bottom: none;
+}
+
 .char-pic img{
     border-radius: 16px;
-    width: 195px;
-    height: 195px;
+    width: 150px;
+    height: 150px;
 }
 
 .char-name input{
     font-family: var(--font-name);
-    border-radius: 16px; 
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
 }
@@ -286,7 +293,7 @@
     list-style: circle;
     text-align: left;
     padding: 5px;
-	background-color: rgba(245, 245, 220, 0.5);
+	background-color: rgba(182, 182, 182, 0.5);
     color: #000000;
     height: 400px;
 }
@@ -318,7 +325,6 @@
 
 .archetype input {
     width: 250%;
-    border-radius: 16px;
     text-align: center;
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
@@ -343,7 +349,6 @@
 
 .npctag input {
     width: 200%;
-    border-radius: 16px;
     text-align: center;
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
@@ -352,6 +357,7 @@
 .item-list {
     width: 100%;
     border: none;
+    text-align: center; 
 }
 
 
@@ -361,6 +367,8 @@
     color: var(--list-header-font-color);
     padding-left: 10px;
     padding-right: 8px;
+    text-align: center; 
+
     
 }
 .item-header {
@@ -372,6 +380,7 @@
 }
 .item-list td{
     color: var(--list-text-color);
+    text-align: center; 
 }
 
 .item-list img{
@@ -387,7 +396,6 @@
 }
 
 .item-name input{
-    border-radius: 16px; 
     text-align: center;
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
@@ -477,7 +485,7 @@
     --header-font-color: #000000;
     --list-header-font-color: #ffffff;
     --list-header-color: #000000;
-    --input-bg-color: #ffffdc;
+    --input-bg-color: #999999;
     --list-text-color: #000000;
     --input-text-color: #000000;
     --window-header-bg-color: #000000;
@@ -489,10 +497,12 @@
     --tab-bg-color-hover: #555353;
     --tab-text-color-active: #ffffff;
     --tab-text-color-hover: #d8d1d1;
+    --button-font-color: #000000;
+    --button-bg-color: #ffffff;
 
 }
 
-.tinyd6{  
+.tinyd6{ 
 
 }
 

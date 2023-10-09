@@ -3,6 +3,11 @@
     <section class="left-section">
       <div class="char-name"><h2><input name="name" type="text" value="{{actor.name}}" placeholder='Nombre' onClick="this.select();"/></h2></div>
       <div class="char-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
+      <a class="regular-roll">
+        <div>
+          <h1><label>{{localize "TINY.ui.roll"}}</label></h1>
+        </div>
+      </a>
       <div class="competence">
         <h2><label>{{localize "TINY.competence.weapon"}}</label></h2>
         <table>
@@ -43,15 +48,16 @@
         </table>
       </h2>
       <div class="resources">
-          {{#times actor.system.resources.hitpoints.max}}
-              <a class="resource-change" data-resource="hitpoints" data-number={{.}}>
-                {{#if (gte . ../actor.system.resources.hitpoints.value)}}
+          {{#times actor.system.resources.totalhitpoints.max}}
+              <a class="resource-change" data-resource="totalhitpoints" data-number={{.}}>
+                {{#if (gte . ../actor.system.resources.totalhitpoints.value)}}
                   <h2><i class="far fa-square"></i></h2>
                 {{else}}
                   <h2><i class="fas fa-check-square"></i></h2>
                 {{/if}}
               </a>
           {{/times}}
+          
       </div>
     </section>
     
