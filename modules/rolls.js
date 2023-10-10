@@ -1,21 +1,39 @@
-export async function DiceRollV2(event)
+export async function DiceRollV2(rollType, focus, defense)
 {
-    event.preventDefault();
-    const dataset = event.currentTarget.dataset;
     let tirada= ""
     let testResult=""
     let nExitos=0
     let nUnos=0
     let rollText=""
     let dados=[];
-    let nDice=dataset.ndice
-    let difficulty=Number(document.getElementById("ndiff").value);
-    let canSpendKarma=true
-    let actor = game.actors.get(ChatMessage.getSpeaker().actor);
+    let nDice=0;
     let actor_id = ChatMessage.getSpeaker().actor;
-    if (game.user.isGM==false){
-        if (actor.system.resources.karma.value <= 0){canSpendKarma=false}
+    switch (rollType){
+        case 'ventaja':
+        {
+          nDice=3;
+          break;
+        }
+        case 'normal':
+        {
+            nDice=2;
+            break;
+        }
+        case 'desventaja':
+        {
+            nDice=1;
+            break;
+        }
+
     }
+    let difficulty=5;
+    if (focus==true){
+        difficulty=4;
+    }
+    if (defense=true){
+        
+    }
+    let actor = game.actors.get(ChatMessage.getSpeaker().actor);
     tirada=nDice+"d6"
     rollText="<label>"+tirada+" VS "+difficulty+"</label>"
     let d6Roll = await new Roll(String(tirada)).roll({async: false});
@@ -35,7 +53,6 @@ export async function DiceRollV2(event)
     }
     if (nUnos >= nDice){
         testResult="<h3 class=\"critical-failure\">"+game.i18n.localize("TRI.ui.criticalFailure")+"</h3>"
-        canSpendKarma=false
     }
 
     let renderedRoll = await renderTemplate("systems/tinyd6/templates/chat/test-result.html", { 
@@ -45,7 +62,7 @@ export async function DiceRollV2(event)
         nDice: nDice,
         rollText: rollText,
         nDiff: difficulty,
-        canSpendKarma: canSpendKarma,
+        canSpendKarma: false,
         testResult: testResult
     });
 

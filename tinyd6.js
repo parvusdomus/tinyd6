@@ -45,8 +45,8 @@ Hooks.once("init", function(){
 
 
 //  game.settings.register("tinyd6", "enableSubStyles", {
-//    name: game.i18n.localize("TRI.config.enableSubStylesName"),
-//    hint: game.i18n.localize("TRI.config.enableSubStylesHint"),
+//    name: game.i18n.localize("TINY.config.enableSubStylesName"),
+//    hint: game.i18n.localize("TINY.config.enableSubStylesHint"),
 //    scope: "world",
 //    type: Boolean,
 //    default: false,
@@ -55,8 +55,8 @@ Hooks.once("init", function(){
 //  });
 
   game.settings.register('tinyd6', 'bgImage', {
-    name: game.i18n.localize("TRI.config.bgImageName"),
-    hint: game.i18n.localize("TRI.config.bgImageHint"),
+    name: game.i18n.localize("TINY.config.bgImageName"),
+    hint: game.i18n.localize("TINY.config.bgImageHint"),
     type: String,
     default: 'systems/tinyd6/style/images/white.webp',
     scope: 'world',
@@ -66,8 +66,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'chatBgImage', {
-    name: game.i18n.localize("TRI.config.chatBgImageName"),
-    hint: game.i18n.localize("TRI.config.chatBgImageHint"),
+    name: game.i18n.localize("TINY.config.chatBgImageName"),
+    hint: game.i18n.localize("TINY.config.chatBgImageHint"),
     type: String,
     default: 'systems/tinyd6/style/images/white.webp',
     scope: 'world',
@@ -77,8 +77,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'titleFont', {
-    name: game.i18n.localize("TRI.config.titleFontName"),
-    hint: game.i18n.localize("TRI.config.titleFontHint"),
+    name: game.i18n.localize("TINY.config.titleFontName"),
+    hint: game.i18n.localize("TINY.config.titleFontHint"),
     config: true,
     type: String,
     scope: 'world',
@@ -150,8 +150,8 @@ Hooks.once("init", function(){
   }); 
 
   game.settings.register('tinyd6', 'listHeaderBgColor', {
-      name: game.i18n.localize("TRI.config.listHeaderBgColorName"),
-      hint: game.i18n.localize("TRI.config.listHeaderBgColorHint"),
+      name: game.i18n.localize("TINY.config.listHeaderBgColorName"),
+      hint: game.i18n.localize("TINY.config.listHeaderBgColorHint"),
       scope: 'world',
       requiresReload: true,
       config: true,
@@ -160,8 +160,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'listHeaderFontColor', {
-    name: game.i18n.localize("TRI.config.listHeaderFontColorName"),
-    hint: game.i18n.localize("TRI.config.listHeaderFontColorHint"),
+    name: game.i18n.localize("TINY.config.listHeaderFontColorName"),
+    hint: game.i18n.localize("TINY.config.listHeaderFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -170,8 +170,8 @@ Hooks.once("init", function(){
   }); 
 
   game.settings.register('tinyd6', 'headerFontColor', {
-    name: game.i18n.localize("TRI.config.headerFontColorName"),
-    hint: game.i18n.localize("TRI.config.headerFontColorHint"),
+    name: game.i18n.localize("TINY.config.headerFontColorName"),
+    hint: game.i18n.localize("TINY.config.headerFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -180,8 +180,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'regularFontColor', {
-    name: game.i18n.localize("TRI.config.itemFontColorName"),
-    hint: game.i18n.localize("TRI.config.itemFontColorHint"),
+    name: game.i18n.localize("TINY.config.itemFontColorName"),
+    hint: game.i18n.localize("TINY.config.itemFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -190,8 +190,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'inputBgColor', {
-    name: game.i18n.localize("TRI.config.inputBgColorName"),
-    hint: game.i18n.localize("TRI.config.inputBgColorHint"),
+    name: game.i18n.localize("TINY.config.inputBgColorName"),
+    hint: game.i18n.localize("TINY.config.inputBgColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -200,8 +200,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'inputFontColor', {
-    name: game.i18n.localize("TRI.config.inputFontColorName"),
-    hint: game.i18n.localize("TRI.config.inputFontColorHint"),
+    name: game.i18n.localize("TINY.config.inputFontColorName"),
+    hint: game.i18n.localize("TINY.config.inputFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -210,8 +210,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'windowHeaderBgColor', {
-    name: game.i18n.localize("TRI.config.windowHeaderBgColorName"),
-    hint: game.i18n.localize("TRI.config.windowHeaderBgColorHint"),
+    name: game.i18n.localize("TINY.config.windowHeaderBgColorName"),
+    hint: game.i18n.localize("TINY.config.windowHeaderBgColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -220,8 +220,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'windowHeaderFontColor', {
-    name: game.i18n.localize("TRI.config.windowHeaderFontColorName"),
-    hint: game.i18n.localize("TRI.config.windowHeaderFontColorHint"),
+    name: game.i18n.localize("TINY.config.windowHeaderFontColorName"),
+    hint: game.i18n.localize("TINY.config.windowHeaderFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -230,8 +230,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'dieRollerFontColor', {
-    name: game.i18n.localize("TRI.config.dieRollerFontColorName"),
-    hint: game.i18n.localize("TRI.config.dieRollerFontColorHint"),
+    name: game.i18n.localize("TINY.config.dieRollerFontColorName"),
+    hint: game.i18n.localize("TINY.config.dieRollerFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -240,8 +240,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'dieRollerButtonBgColor', {
-    name: game.i18n.localize("TRI.config.dieRollerButtonBgColorName"),
-    hint: game.i18n.localize("TRI.config.dieRollerButtonBgColorHint"),
+    name: game.i18n.localize("TINY.config.dieRollerButtonBgColorName"),
+    hint: game.i18n.localize("TINY.config.dieRollerButtonBgColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -250,8 +250,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'dieRollerButtonFontColor', {
-    name: game.i18n.localize("TRI.config.dieRollerButtonFontColorName"),
-    hint: game.i18n.localize("TRI.config.dieRollerButtonFontColorHint"),
+    name: game.i18n.localize("TINY.config.dieRollerButtonFontColorName"),
+    hint: game.i18n.localize("TINY.config.dieRollerButtonFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -260,8 +260,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'tabActiveBgColor', {
-    name: game.i18n.localize("TRI.config.tabActiveBgColorName"),
-    hint: game.i18n.localize("TRI.config.tabActiveBgColorHint"),
+    name: game.i18n.localize("TINY.config.tabActiveBgColorName"),
+    hint: game.i18n.localize("TINY.config.tabActiveBgColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -270,8 +270,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'tabActiveFontColor', {
-    name: game.i18n.localize("TRI.config.tabActiveFontColorName"),
-    hint: game.i18n.localize("TRI.config.tabActiveFontColorHint"),
+    name: game.i18n.localize("TINY.config.tabActiveFontColorName"),
+    hint: game.i18n.localize("TINY.config.tabActiveFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -280,8 +280,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'tabHoverBgColor', {
-    name: game.i18n.localize("TRI.config.tabHoverBgColorName"),
-    hint: game.i18n.localize("TRI.config.tabHoverBgColorHint"),
+    name: game.i18n.localize("TINY.config.tabHoverBgColorName"),
+    hint: game.i18n.localize("TINY.config.tabHoverBgColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
@@ -290,8 +290,8 @@ Hooks.once("init", function(){
   });
 
   game.settings.register('tinyd6', 'tabHoverFontColor', {
-    name: game.i18n.localize("TRI.config.tabHoverFontColorName"),
-    hint: game.i18n.localize("TRI.config.tabHoverFontColorHint"),
+    name: game.i18n.localize("TINY.config.tabHoverFontColorName"),
+    hint: game.i18n.localize("TINY.config.tabHoverFontColorHint"),
     scope: 'world',
     requiresReload: true,
     config: true,
