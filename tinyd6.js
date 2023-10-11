@@ -2,7 +2,6 @@ import TINY_CHAR_SHEET from "./modules/tiny_charsheet.js";
 import TINY_CHALLENGE_SHEET from "./modules/tiny_challengesheet.js";
 import TINY_ITEM_SHEET from "./modules/tiny_itemsheet.js";
 import { preloadHandlebarsTemplates } from "./modules/preloadTemplates.js";
-import DieRoller from "./modules/DieRoller.js";
 import {_getInitiativeFormula} from './modules/combat.js';
 import {diceToFaces} from "./modules/rolls.js";
 import tinyChat from "./modules/chat.js";
@@ -35,13 +34,6 @@ Hooks.once("init", function(){
     CONFIG.Canvas.pings.styles.arrow.duration = 2000
 
   console.log("test | INITIALIZING TINY SETTINGS...");
-
-  game.settings.register("tinyd6", "dieRollerPosition", {
-    scope: "client",
-    config: false,
-    default: null,
-    type: Object
-  });
 
 
 //  game.settings.register("tinyd6", "enableSubStyles", {
@@ -369,11 +361,6 @@ Hooks.on("renderPause", () => {
   $("#pause img").attr("class", "fa-spin pause-image");
   $("#pause figcaption").attr("class", "pause-tinyd6");
 });
-
-Hooks.on('ready', () => {
-  new DieRoller(DieRoller.defaultOptions, { excludeTextLabels: true }).render(true);
-  
-})
 
 
 Hooks.on('renderSettingsConfig', (app, el, data) => {
