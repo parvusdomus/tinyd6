@@ -214,12 +214,19 @@
     color: var(--button-font-color);
     background-color: var(--button-bg-color);
     border-bottom: none;
+    border: 2px solid;
+}
+
+.left-section table{
+    background: none;
+    border: none;
 }
 
 .char-pic img{
     border-radius: 16px;
     width: 150px;
     height: 150px;
+    background-color: #999999;
 }
 
 .char-name input{

@@ -2,7 +2,22 @@
   <div class="charsheet">
     <section class="left-section">
       <div class="char-name"><h2><input name="name" type="text" value="{{actor.name}}" placeholder='Nombre' onClick="this.select();"/></h2></div>
-      <div class="char-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
+      <table>
+        <tr>
+          <td>
+            <label>{{localize "TINY.ui.focus"}}</label>
+            <input type="checkbox" {{checked actor.system.focus}} name="system.focus">
+          </td>
+          <td>
+            <div class="char-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
+          </td>
+          <td>
+            <label>{{localize "TINY.ui.defense"}}</label>
+            <input type="checkbox" {{checked actor.system.defense}} name="system.defense">
+          </td>
+        </tr>
+      </table>
+      
       <a class="regular-roll">
         <div>
           <h1><label>{{localize "TINY.ui.roll"}}</label></h1>

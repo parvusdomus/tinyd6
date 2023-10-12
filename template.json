@@ -9,6 +9,8 @@
             "archetype":"",
             "bussiness": "",
             "belief": "",
+            "focus": false,
+            "defense": false,
             "resources":{
                 "hitpoints": {
                     "value": 0,

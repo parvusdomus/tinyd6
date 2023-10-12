@@ -1,4 +1,4 @@
-import {DiceRollV2} from "../modules/rolls.js";
+import {DiceRoll} from "../modules/rolls.js";
 export default class TINY_CHAR_SHEET extends ActorSheet{
     static get defaultOptions() {
       let adjusted_height= 650;
@@ -34,6 +34,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const Armors = [];
       const EquippedWeapons = [];
       const EquippedArmors =[];
+      let armorhitpoints=0;
       for (let i of sheetData.items){
         switch (i.type){
 				  case 'trait':
@@ -111,12 +112,10 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
               }
             }
             Armors.push(i);
-            let armorhitpoints=0;
             if (i.system.equipped==true){
               armorhitpoints=item.system.extralife;
               EquippedArmors.push(i);
             }
-            this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
             break;			  
           }
           
@@ -129,7 +128,8 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       actorData.EquippedArmors = EquippedArmors;
       actorData.Items = Items;
       actorData.Armors = Armors;
-      let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(this.actor.system.resources.armorhitpoints.max)+Number(this.actor.system.resources.extrahitpoints.max)
+      let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(armorhitpoints)+Number(this.actor.system.resources.extrahitpoints.max)
+      this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
       this.actor.update ({'system.resources.totalhitpoints.max': totalhitpoints})
       actorData.settings = {
         
@@ -217,6 +217,13 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         item.update ({'system.equipped': false})
       }
       else{
+        if (item.type="armor"){
+          for (let i of this.actor.items){
+            if ((i.type="armor")&&(i.system.equipped=true)){
+              i.update ({'system.equipped': false})
+            }
+          }
+        }
         item.update ({'system.equipped': true})
       }
 		  return;
@@ -228,8 +235,8 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const dataset = event.currentTarget.dataset;
       console.log ("dataset")
       Dialog.confirm({
-        title: game.i18n.localize("TRI.ui.deleteTitle"),
-			  content: game.i18n.localize("TRI.ui.deleteText"),
+        title: game.i18n.localize("TINY.ui.deleteTitle"),
+			  content: game.i18n.localize("TINY.ui.deleteText"),
         yes: () => this.actor.deleteEmbeddedDocuments("Item", [dataset.id]),
         no: () => {},
         defaultYes: false
@@ -273,25 +280,54 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
     async _onRegularRoll(event)
     {
       console.log ("ON REGULAR ROLL")
+      let html_content='<table style="background: none; border:none; text-align: center;"><tr><td><label>'+game.i18n.localize("TINY.ui.focus")+'</label><input type="checkbox"' 
+      if (this.actor.system.focus){
+        html_content+=' checked'
+      } 
+      html_content+=' name="focus" id="focus"></td>'
+      +'<td><label>'+game.i18n.localize("TINY.ui.defense")
+      +'</label><input type="checkbox"' 
+      if (this.actor.system.defense){
+        html_content+=' checked'
+      } 
+      html_content+=' name="defense" id="defense"></td></tr></table>'
 
       let d = new Dialog({
-        title: "Test Dialog",
-        content: "<p>You must choose either Option 1, or Option 2</p>",
+        title: game.i18n.localize("TINY.ui.diceRoll"),
+        content: html_content,
         buttons: {
          desventaja: {
-          icon: '<i class="fas fa-check"></i>',
-          label: "Desventaja",
-          callback: () => DiceRollV2('desventaja',false,false)
+          icon: '<i class="fa-solid fa-cube"></i>',
+          label: game.i18n.localize("TINY.ui.disadvantageRoll"),
+          callback: () => {
+            let focus=document.getElementById("focus").checked;
+            let defense=document.getElementById("defense").checked;
+            DiceRoll('desventaja',focus,defense)
+            this.actor.update ({'system.focus': focus});
+            this.actor.update ({'system.defense': defense});
+          }
          },
          normal: {
-          icon: '<i class="fas fa-times"></i>',
-          label: "Normal",
-          callback: () => DiceRollV2('normal',false,false)
+          icon: '<i class="fa-solid fa-dice"></i>',
+          label: game.i18n.localize("TINY.ui.regularRoll"),
+          callback: () => {
+            let focus=document.getElementById("focus").checked;
+            let defense=document.getElementById("defense").checked;
+            DiceRoll('normal',focus,defense)
+            this.actor.update ({'system.focus': focus});
+            this.actor.update ({'system.defense': defense});
+          }
          },
          ventaja: {
-          icon: '<i class="fas fa-times"></i>',
-          label: "Ventaja",
-          callback: () => DiceRollV2('ventaja',false,false)
+          icon: '<i class="fa-solid fa-cubes"></i>',
+          label: game.i18n.localize("TINY.ui.advantageRoll"),
+          callback: () => {
+            let focus=document.getElementById("focus").checked;
+            let defense=document.getElementById("defense").checked;
+            DiceRoll('ventaja',focus,defense)
+            this.actor.update ({'system.focus': focus});
+            this.actor.update ({'system.defense': defense});
+          }
          }
         },
         default: "two",

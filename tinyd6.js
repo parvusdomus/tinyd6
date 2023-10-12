@@ -36,15 +36,15 @@ Hooks.once("init", function(){
   console.log("test | INITIALIZING TINY SETTINGS...");
 
 
-//  game.settings.register("tinyd6", "enableSubStyles", {
-//    name: game.i18n.localize("TINY.config.enableSubStylesName"),
-//    hint: game.i18n.localize("TINY.config.enableSubStylesHint"),
-//    scope: "world",
-//    type: Boolean,
-//    default: false,
-//    requiresReload: true,
-//    config: true
-//  });
+  game.settings.register("tinyd6", "enableCritical", {
+    name: game.i18n.localize("TINY.config.enableCriticalName"),
+    hint: game.i18n.localize("TINY.config.enableCriticalHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: false,
+    config: true
+  });
 
   game.settings.register('tinyd6', 'bgImage', {
     name: game.i18n.localize("TINY.config.bgImageName"),
