@@ -213,19 +213,21 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       event.preventDefault();
 		  const dataset = event.currentTarget.dataset;
 		  const item = this.actor.items.get(dataset.id);
+      console.log (item)
 		  if (item.system.equipped==true){
         item.update ({'system.equipped': false})
       }
       else{
-        if (item.type="armor"){
+        if (item.type=="armor"){
           for (let i of this.actor.items){
-            if ((i.type="armor")&&(i.system.equipped=true)){
+            if ((i.type=="armor")&&(i.system.equipped==true)){
               i.update ({'system.equipped': false})
             }
           }
         }
         item.update ({'system.equipped': true})
       }
+      console.log (item)
 		  return;
     }
     
