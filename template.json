@@ -3,7 +3,7 @@
         "types":
         [
             "Player",
-            "Challenge"
+            "NPC"
         ],
         "Player": {
             "archetype":"",
@@ -40,21 +40,43 @@
                 "heavyranged": false
             },
             "weapondominated":"",
-            "initiative": "2d6cs>=5",
+            "initiative": "2d6",
             "notes": ""
         },
-        "Challenge": {
+        "NPC": {
+            "focus": false,
+            "defense": false,
             "resources":{
-                "effort": {
-                    "value": 3,
+                "hitpoints": {
+                    "value": 0,
                     "min": 0,
-                    "max": 3
+                    "max": 6
+                },
+                "armorhitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "extrahitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "totalhitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
                 }
             },
-            "initiative": "0.99",
-            "traits": "",
-            "rank": 1,
-            "description": ""
+            "competences":{
+                "lightmelee": false,
+                "heavymelee": false,
+                "lightranged": false,
+                "heavyranged": false
+            },
+            "weapondominated":"",
+            "initiative": "2d6",
+            "notes": ""
         }
     },
     "Item": {

@@ -1,5 +1,5 @@
 import TINY_CHAR_SHEET from "./modules/tiny_charsheet.js";
-import TINY_CHALLENGE_SHEET from "./modules/tiny_challengesheet.js";
+import TINY_NPC_SHEET from "./modules/tiny_npc.js";
 import TINY_ITEM_SHEET from "./modules/tiny_itemsheet.js";
 import { preloadHandlebarsTemplates } from "./modules/preloadTemplates.js";
 import {_getInitiativeFormula} from './modules/combat.js';
@@ -16,9 +16,9 @@ Hooks.once("init", function(){
     makeDefault: true,
     types: ['Player']
   });
-  Actors.registerSheet("tinyd6", TINY_CHALLENGE_SHEET, {
+  Actors.registerSheet("tinyd6", TINY_NPC_SHEET, {
     makeDefault: true,
-    types: ['Challenge']
+    types: ['NPC']
   });
   console.log("test | INITIALIZING TINY ITEM SHEETS...");
   Items.unregisterSheet("core", ItemSheet);

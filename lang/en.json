@@ -1,6 +1,6 @@
 {
     "TYPES.Actor.Player": "Player",
-    "TYPES.Actor.Challenge": "Challenge",
+    "TYPES.Actor.NPC": "NPC",
     "TYPES.Item.trait": "Trait",
     "TYPES.Item.weapon": "Weapon",
     "TYPES.Item.item": "Item",

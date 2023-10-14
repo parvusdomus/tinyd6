@@ -229,6 +229,13 @@
     background-color: #999999;
 }
 
+.npc-pic img{
+    border-radius: 16px;
+    width: 100px;
+    height: 100px;
+    background-color: #999999;
+}
+
 .char-name input{
     font-family: var(--font-name);
     background-color: var(--input-bg-color);

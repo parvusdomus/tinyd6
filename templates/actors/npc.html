@@ -1,4 +1,4 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} tinyd6" autocomplete="off">
   <div class="charsheet">
     <section class="left-section">
       <div class="char-name"><h2><input name="name" type="text" value="{{actor.name}}" placeholder='Nombre' onClick="this.select();"/></h2></div>
@@ -9,7 +9,7 @@
             <input type="checkbox" {{checked actor.system.focus}} name="system.focus">
           </td>
           <td>
-            <div class="char-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
+            <div class="npc-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
           </td>
           <td>
             <label>{{localize "TINY.ui.defense"}}</label>
@@ -17,15 +17,14 @@
           </td>
         </tr>
       </table>
-      
       <a class="dice-roll">
         <div>
           <h1><label>{{localize "TINY.ui.roll"}}</label></h1>
         </div>
       </a>
       <div class="competence">
-        <h2><label>{{localize "TINY.competence.weapon"}}</label></h2>
-        <h2><table>
+        <label>{{localize "TINY.competence.weapon"}}</label>
+        <table>
           <tr>
             <td><label>{{localize "TINY.competence.light_melee"}}</label></td>
             <td>
@@ -44,13 +43,12 @@
               <input type="checkbox" {{checked actor.system.competences.heavyranged}} name="system.competences.heavyranged">
             </td>
           </tr>
-        </table></h2>
+        </table>
       </div>
       <div class="dominated">
-          <h2><label>{{localize "TINY.dominate.weapon"}}</label></h2>
+          <label>{{localize "TINY.dominate.weapon"}}</label>
           <input name="system.weapondominated" type="text" value="{{actor.system.weapondominated}}" placeholder='{{localize "TINY.dominate.weapon"}}' data-dtype="String"/>
       </div>
-      <h2 class="resource">
         <table>
           <tr>
             <td>
@@ -61,43 +59,30 @@
             </td>
           </tr>
         </table>
-      </h2>
       <div class="resources">
           {{#times actor.system.resources.totalhitpoints.max}}
               <a class="resource-change" data-resource="totalhitpoints" data-number={{.}}>
                 {{#if (gte . ../actor.system.resources.totalhitpoints.value)}}
-                  <h2><i class="far fa-square"></i></h2>
+                  <i class="far fa-square"></i>
                 {{else}}
-                  <h2><i class="fas fa-check-square"></i></h2>
+                  <i class="fas fa-check-square"></i>
                 {{/if}}
               </a>
           {{/times}}
           
       </div>
+      
     </section>
-    
     <section class="right-section">
-        <nav class="sheet-tabs tabs" data-group="primary">
-          <a class="item" data-tab="general">{{localize "TINY.ui.tab.general"}}</a>
-          <a class="item" data-tab="inventory">{{localize "TINY.ui.tab.inventory"}}</a>
-          <a class="item" data-tab="bio">{{localize "TINY.ui.tab.notes"}}</a>
-          
-        </nav>
-        {{!-- Item Sheet Body --}}
-        <section class="sheet-body">
-          {{!-- General Tab --}}
-          <div class="tab general" data-group="primary" data-tab="general">
-            {{> "/systems/tinyd6/templates/actors/parts/general.html"}}
-          </div>
-          {{!-- Notes Tab --}}
-          <div class="tab bio" data-group="primary" data-tab="bio">
-            {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
-          </div>
-          {{!-- Inventory Tab --}}
-          <div class="tab inventory" data-group="primary" data-tab="inventory">
-            {{> "/systems/tinyd6/templates/actors/parts/inventory.html"}}
-          </div>
-        </section>
+      <ul class="npctag">
+        {{#if settings.enableRank}}
+          <li><h1><a class="rank-change"><label>{{actor.system.rank}}</label></a></h1></li>
+        {{/if}}
+        <li><input name="system.traits" type="text" value="{{actor.system.traits}}" placeholder='{{localize "TRI.ui.tag"}}' data-dtype="String"/></li>
+      </ul>
+      <div>
+        {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
+      </div>
     </section>
   </div>
 </form>

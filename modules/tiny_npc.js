@@ -1,24 +1,19 @@
 import {DiceRoll} from "../modules/rolls.js";
-export default class TINY_CHAR_SHEET extends ActorSheet{
+
+export default class TINY_NPC_SHEET extends ActorSheet{
     static get defaultOptions() {
-      let adjusted_height= 650;
-      //if (game.settings.get("tinyd6", "enableSubTraits")==true || game.settings.get("tinyd6", "enableSubStyles")==true){
-      //  adjusted_height+=130;
-      //}
       return mergeObject(super.defaultOptions, {
           classes: ["tinyd6", "sheet", "actor"],
-          template: "systems/tinyd6/templates/actors/character.html",
-          width: 700,
-          //height: 620,
-          height: adjusted_height,
-          tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "general" }],
-          scrollY: ['section.sheet-body']
+          template: "systems/tinyd6/templates/actors/npc.html",
+          width: 600,
+          height: 505,
+          tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "general" }]
         });
   
     }
     getData() {
       const data = super.getData();
-      if (this.actor.type == 'Player') {
+      if (this.actor.type == 'NPC') {
         this._prepareCharacterItems(data);
         //this._updateInitiative(data);
       }
@@ -137,140 +132,14 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       actorData.isGM = game.user.isGM;
 
     }
-
-    //_updateInitiative(sheetData){
-    //  let initiative=""
-    //  if (sheetData.actor.system.trait=="Agile" || sheetData.actor.system.subtrait.reflexes){
-    //    initiative="3d6cs>=5"
-    //  }
-    //  else{
-    //    initiative="2d6cs>=5"
-    //  }
-    //  this.actor.update ({ 'system.initiative': initiative });
-    //}
-
-
+    
     activateListeners(html)
 	  {
 		  super.activateListeners(html);
-      html.find('a.item-create').click(this._onItemCreate.bind(this));
-      html.find('a.item-equip').click(this._onItemEquip.bind(this));
-      html.find('a.item-edit').click(this._onEditClick.bind(this));
-      html.find('a.item-show').click(this._onShowClick.bind(this));
-		  html.find('a.item-delete').click(this._onDeleteClick.bind(this));
-      html.find('a.resource-change').click(this._onResourceChange.bind(this));
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
+      
     }
 
-    _onItemCreate(event) {
-      event.preventDefault();
-      const header = event.currentTarget;
-      const type = header.dataset.type;
-      const data = duplicate(header.dataset);
-      const name = `${type.capitalize()}`;
-      const itemData = {
-        name: name,
-        type: type,
-        data: data
-      };
-      // Remove the type from the dataset since it's in the itemData.type prop.
-      delete itemData.data["type"];
-    
-      // Finally, create the item!
-      //     return this.actor.createOwnedItem(itemData);
-      return Item.create(itemData, {parent: this.actor});
-    }
-
-    async _onEditClick(event, data)
-	  {
-      event.preventDefault();
-		  const dataset = event.currentTarget.dataset;
-		  const item = this.actor.items.get(dataset.id);
-		  item.sheet.render(true);
-		  return;
-    }
-
-    async _onShowClick(event, data)
-	  {
-      event.preventDefault();
-		  const dataset = event.currentTarget.dataset;
-		  const item = this.actor.items.get(dataset.id);
-      let chatData = {}
-      let msg_content = "<p><span>"+item.name+" </span>"
-      if (item.system.tag != ""){msg_content+="<span style=\"background-color:"+item.system.bg_color+"; color:"+item.system.text_color+"\">&nbsp;"+item.system.tag+"&nbsp;</span>"}
-      msg_content+="</p>"
-      if (item.system.desc != ""){msg_content+="<hr>"+item.system.desc}
-      chatData = {
-        content: msg_content,
-      };
-      ChatMessage.create(chatData);
-		  return;
-    }
-
-    async _onItemEquip(event, data)
-	  {
-      event.preventDefault();
-		  const dataset = event.currentTarget.dataset;
-		  const item = this.actor.items.get(dataset.id);
-      console.log (item)
-		  if (item.system.equipped==true){
-        item.update ({'system.equipped': false})
-      }
-      else{
-        if (item.type=="armor"){
-          for (let i of this.actor.items){
-            if ((i.type=="armor")&&(i.system.equipped==true)){
-              i.update ({'system.equipped': false})
-            }
-          }
-        }
-        item.update ({'system.equipped': true})
-      }
-      console.log (item)
-		  return;
-    }
-    
-    async _onDeleteClick(event, data)
-    {
-      event.preventDefault();
-      const dataset = event.currentTarget.dataset;
-      console.log ("dataset")
-      Dialog.confirm({
-        title: game.i18n.localize("TINY.ui.deleteTitle"),
-			  content: game.i18n.localize("TINY.ui.deleteText"),
-        yes: () => this.actor.deleteEmbeddedDocuments("Item", [dataset.id]),
-        no: () => {},
-        defaultYes: false
-         });
-      return;
-    }
-
-    async _onResourceChange(event, data)
-    {
-      event.preventDefault();
-      const dataset = event.currentTarget.dataset;
-      let value=0;
-      if (Number(dataset.number)==0){
-        if (Number(this.actor.system.resources[dataset.resource].value)==0){
-          value=1;
-        }
-        else{
-          value=0;
-        }
-      }
-      else{
-        value=Number(dataset.number)+1
-      }
-      switch (dataset.resource){
-        case 'totalhitpoints':
-        {
-          this.actor.update ({'system.resources.totalhitpoints.value': value});
-          break;
-        }
-      }
-      return;
-    }
- 
     async _onDiceRoll(event)
     {
       let html_content='<table style="background: none; border:none; text-align: center;"><tr><td><label>'+game.i18n.localize("TINY.ui.focus")+'</label><input type="checkbox"' 
@@ -330,5 +199,8 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
        d.render(true);
       return;
     }
+  
+
+    
   
   }

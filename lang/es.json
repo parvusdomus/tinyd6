@@ -1,6 +1,6 @@
 {
     "TYPES.Actor.Player": "Jugador",
-    "TYPES.Actor.Challenge": "Reto",
+    "TYPES.Actor.Challenge": "PNJ",
     "TYPES.Item.trait": "Rasgo",
     "TYPES.Item.weapon": "Arma",
     "TYPES.Item.item": "Objeto",
