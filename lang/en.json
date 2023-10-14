@@ -8,7 +8,7 @@
 
     "TINY.resources.hitpoints": "Hit Points",
     "TINY.competence.weapon": "Weapon Competence",
-    "TINY.dominate.weapon": "Weapon Dominated",
+    "TINY.dominate.weapon": "Dominated Weapon",
     "TINY.competence.light_melee": "LM",
     "TINY.competence.heavy_melee": "HM",
     "TINY.competence.light_ranged": "LR",
@@ -46,6 +46,7 @@
     "TINY.ui.criticalSuccess": "Critical Success!!",
     "TINY.ui.regularFailure": "Failure",
     "TINY.ui.criticalFailure": "Critical Failure!",
+    "TINY.ui.cantAddMore": "Can't add more of that item to this sheet.",
  
     "TINY.ui.diceRoll": "Dice Roll.",
     "TINY.ui.advantageRoll": "Advantage",

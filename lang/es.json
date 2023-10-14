@@ -47,6 +47,7 @@
     "TINY.ui.criticalSuccess": "¡¡Éxito Crítico!!",
     "TINY.ui.regularFailure": "Fallo",
     "TINY.ui.criticalFailure": "Fallo Crítico!",
+    "TINY.ui.cantAddMore": "No puedes añadir más objetos de ese tipo a esa ficha.",
  
     "TINY.ui.diceRoll": "Tirada de Dados",
     "TINY.ui.advantageRoll": "Ventaja",

@@ -23,26 +23,15 @@ export default class TINY_NPC_SHEET extends ActorSheet{
     _prepareCharacterItems(sheetData){
       const actorData = sheetData;
       const Traits = [];
-      const Archetype_Traits = [];
       const Weapons = [];
-      const Items = [];
       const Armors = [];
-      const EquippedWeapons = [];
-      const EquippedArmors =[];
       let armorhitpoints=0;
       for (let i of sheetData.items){
         switch (i.type){
 				  case 'trait':
 				  {
-            if (i.system.archetype == true){
-              Archetype_Traits.push(i);
-					    break;
-            }
-            else{
-              Traits.push(i);
-              break;
-            }
-					  
+            Traits.push(i);
+            break;
 				  }
           case 'weapon':
 				  {
@@ -76,16 +65,8 @@ export default class TINY_NPC_SHEET extends ActorSheet{
               }
             }
             Weapons.push(i);
-            if (i.system.equipped==true){
-              EquippedWeapons.push(i);
-            }
 					  break;			  
 				  }
-          case 'item':
-          {
-            Items.push(i);
-            break;			  
-          }
           case 'armor':
           {
             const item = this.actor.items.get(i._id);
@@ -106,10 +87,13 @@ export default class TINY_NPC_SHEET extends ActorSheet{
                 break;
               }
             }
-            Armors.push(i);
-            if (i.system.equipped==true){
+            if (Armors.length <= 0){
+              Armors.push(i);
               armorhitpoints=item.system.extralife;
-              EquippedArmors.push(i);
+            } 
+            else{
+              ui.notifications.warn(game.i18n.localize("TINY.ui.cantAddMore"));
+              this.actor.deleteEmbeddedDocuments("Item", [item._id])
             }
             break;			  
           }
@@ -117,11 +101,7 @@ export default class TINY_NPC_SHEET extends ActorSheet{
         }
       }
       actorData.Traits = Traits;
-      actorData.Archetype_Traits = Archetype_Traits;
       actorData.Weapons = Weapons;
-      actorData.EquippedWeapons = EquippedWeapons;
-      actorData.EquippedArmors = EquippedArmors;
-      actorData.Items = Items;
       actorData.Armors = Armors;
       let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(armorhitpoints)+Number(this.actor.system.resources.extrahitpoints.max)
       this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
@@ -137,7 +117,52 @@ export default class TINY_NPC_SHEET extends ActorSheet{
 	  {
 		  super.activateListeners(html);
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
-      
+      html.find('a.resource-change').click(this._onResourceChange.bind(this));
+      html.find('a.competence-toggle').click(this._onCompetenceToggle.bind(this));
+      html.find('a.item-edit').click(this._onEditClick.bind(this));
+      html.find('a.item-show').click(this._onShowClick.bind(this));
+		  html.find('a.item-delete').click(this._onDeleteClick.bind(this));
+    }
+
+    async _onEditClick(event, data)
+	  {
+      event.preventDefault();
+		  const dataset = event.currentTarget.dataset;
+		  const item = this.actor.items.get(dataset.id);
+		  item.sheet.render(true);
+		  return;
+    }
+
+    async _onShowClick(event, data)
+	  {
+      event.preventDefault();
+		  const dataset = event.currentTarget.dataset;
+		  const item = this.actor.items.get(dataset.id);
+      let chatData = {}
+      let msg_content = "<p><span>"+item.name+" </span>"
+      if (item.system.tag != ""){msg_content+="<span style=\"background-color:"+item.system.bg_color+"; color:"+item.system.text_color+"\">&nbsp;"+item.system.tag+"&nbsp;</span>"}
+      msg_content+="</p>"
+      if (item.system.desc != ""){msg_content+="<hr>"+item.system.desc}
+      chatData = {
+        content: msg_content,
+      };
+      ChatMessage.create(chatData);
+		  return;
+    }
+
+    async _onDeleteClick(event, data)
+    {
+      event.preventDefault();
+      const dataset = event.currentTarget.dataset;
+      console.log ("dataset")
+      Dialog.confirm({
+        title: game.i18n.localize("TINY.ui.deleteTitle"),
+			  content: game.i18n.localize("TINY.ui.deleteText"),
+        yes: () => this.actor.deleteEmbeddedDocuments("Item", [dataset.id]),
+        no: () => {},
+        defaultYes: false
+         });
+      return;
     }
 
     async _onDiceRoll(event)
@@ -200,7 +225,83 @@ export default class TINY_NPC_SHEET extends ActorSheet{
       return;
     }
   
+    async _onResourceChange(event, data)
+    {
+      event.preventDefault();
+      const dataset = event.currentTarget.dataset;
+      let value=0;
+      if (Number(dataset.number)==0){
+        if (Number(this.actor.system.resources[dataset.resource].value)==0){
+          value=1;
+        }
+        else{
+          value=0;
+        }
+      }
+      else{
+        value=Number(dataset.number)+1
+      }
+      switch (dataset.resource){
+        case 'totalhitpoints':
+        {
+          this.actor.update ({'system.resources.totalhitpoints.value': value});
+          break;
+        }
+      }
+      return;
+    }
 
+    async _onCompetenceToggle (event, data){
+      event.preventDefault();
+      const dataset = event.currentTarget.dataset;
+      switch (dataset.competence){
+        case 'lightmelee':
+        {
+          if (this.actor.system.competences.lightmelee==true){
+            await this.actor.update ({'system.competences.lightmelee': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.lightmelee': true});
+          }
+          
+          break;
+        }
+        case 'heavymelee':
+        {
+          if (this.actor.system.competences.heavymelee==true){
+            await this.actor.update ({'system.competences.heavymelee': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.heavymelee': true});
+          }
+          
+          break;
+        }
+        case 'lightranged':
+        {
+          if (this.actor.system.competences.lightranged==true){
+            await this.actor.update ({'system.competences.lightranged': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.lightranged': true});
+          }
+          console.log (this.actor.system.competences.lightranged)
+          break;
+        }
+        case 'heavyranged':
+        {
+          if (this.actor.system.competences.heavyranged==true){
+            await this.actor.update ({'system.competences.heavyranged': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.heavyranged': true});
+          }
+          
+          break;
+        }
+      }
+      return;
+    }
     
   
   }

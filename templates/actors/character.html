@@ -25,26 +25,42 @@
       </a>
       <div class="competence">
         <h2><label>{{localize "TINY.competence.weapon"}}</label></h2>
-        <h2><table>
+        <table>
           <tr>
             <td><label>{{localize "TINY.competence.light_melee"}}</label></td>
             <td>
-              <h2><input type="checkbox" {{checked actor.system.competences.lightmelee}} name="system.competences.lightmelee"></h2>
+              {{#if (eq actor.system.competences.lightmelee true)}}
+                <a class="competence-toggle" data-competence="lightmelee"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="lightmelee"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.heavy_melee"}}</label></td>
             <td>
-              <input type="checkbox" {{checked actor.system.competences.heavymelee}} name="system.competences.heavymelee">
+              {{#if (eq actor.system.competences.heavymelee true)}}
+                <a class="competence-toggle" data-competence="heavymelee"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="heavymelee"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.light_ranged"}}</label></td>
             <td>
-              <input type="checkbox" {{checked actor.system.competences.lightranged}} name="system.competences.lightranged">
+              {{#if (eq actor.system.competences.lightranged true)}}
+                <a class="competence-toggle" data-competence="lightranged"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="lightranged"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.heavy_ranged"}}</label></td>
             <td>
-              <input type="checkbox" {{checked actor.system.competences.heavyranged}} name="system.competences.heavyranged">
+              {{#if (eq actor.system.competences.heavyranged true)}}
+                <a class="competence-toggle" data-competence="heavyranged"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="heavyranged"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
           </tr>
-        </table></h2>
+        </table>
       </div>
       <div class="dominated">
           <h2><label>{{localize "TINY.dominate.weapon"}}</label></h2>

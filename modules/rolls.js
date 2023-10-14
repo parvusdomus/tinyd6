@@ -57,7 +57,7 @@ export async function DiceRoll(rollType, focus, defense)
             testResult="<h3 class=\"critical-success\">"+game.i18n.localize("TINY.ui.criticalSuccess")+"</h3>"
         }
         else{
-            if (additional._total == 6){
+            if ((nSeises == Number(nDice)) && (critEnabled==true) && (Number(nDice)==1) && (additional._total == 6)){
                 testResult="<h3 class=\"critical-success\">"+game.i18n.localize("TINY.ui.criticalSuccess")+"</h3>"
             }
         }

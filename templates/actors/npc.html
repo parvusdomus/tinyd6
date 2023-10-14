@@ -28,19 +28,35 @@
           <tr>
             <td><label>{{localize "TINY.competence.light_melee"}}</label></td>
             <td>
-              <h2><input type="checkbox" {{checked actor.system.competences.lightmelee}} name="system.competences.lightmelee"></h2>
+              {{#if (eq actor.system.competences.lightmelee true)}}
+                <a class="competence-toggle" data-competence="lightmelee"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="lightmelee"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.heavy_melee"}}</label></td>
             <td>
-              <input type="checkbox" {{checked actor.system.competences.heavymelee}} name="system.competences.heavymelee">
+              {{#if (eq actor.system.competences.heavymelee true)}}
+                <a class="competence-toggle" data-competence="heavymelee"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="heavymelee"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.light_ranged"}}</label></td>
             <td>
-              <input type="checkbox" {{checked actor.system.competences.lightranged}} name="system.competences.lightranged">
+              {{#if (eq actor.system.competences.lightranged true)}}
+                <a class="competence-toggle" data-competence="lightranged"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="lightranged"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.heavy_ranged"}}</label></td>
             <td>
-              <input type="checkbox" {{checked actor.system.competences.heavyranged}} name="system.competences.heavyranged">
+              {{#if (eq actor.system.competences.heavyranged true)}}
+                <a class="competence-toggle" data-competence="heavyranged"><i class="far fa-check-square"></i></a>
+              {{else}}
+                <a class="competence-toggle" data-competence="heavyranged"><i class="fa-regular fa-square"></i></a>
+              {{/if}}
             </td>
           </tr>
         </table>
@@ -73,16 +89,24 @@
       </div>
       
     </section>
+    
     <section class="right-section">
-      <ul class="npctag">
-        {{#if settings.enableRank}}
-          <li><h1><a class="rank-change"><label>{{actor.system.rank}}</label></a></h1></li>
-        {{/if}}
-        <li><input name="system.traits" type="text" value="{{actor.system.traits}}" placeholder='{{localize "TRI.ui.tag"}}' data-dtype="String"/></li>
-      </ul>
-      <div>
-        {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
-      </div>
+      <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="general">{{localize "TINY.ui.tab.general"}}</a>
+        <a class="item" data-tab="bio">{{localize "TINY.ui.tab.notes"}}</a>
+        
+      </nav>
+      {{!-- Item Sheet Body --}}
+      <section class="sheet-body">
+        {{!-- General Tab --}}
+        <div class="tab general" data-group="primary" data-tab="general">
+          {{> "/systems/tinyd6/templates/actors/parts/general_NPC.html"}}
+        </div>
+        {{!-- Notes Tab --}}
+        <div class="tab bio" data-group="primary" data-tab="bio">
+          {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
+        </div>
+      </section>
     </section>
   </div>
 </form>

@@ -160,6 +160,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
 		  html.find('a.item-delete').click(this._onDeleteClick.bind(this));
       html.find('a.resource-change').click(this._onResourceChange.bind(this));
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
+      html.find('a.competence-toggle').click(this._onCompetenceToggle.bind(this));
     }
 
     _onItemCreate(event) {
@@ -265,6 +266,58 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         case 'totalhitpoints':
         {
           this.actor.update ({'system.resources.totalhitpoints.value': value});
+          break;
+        }
+      }
+      return;
+    }
+
+    async _onCompetenceToggle (event, data){
+      event.preventDefault();
+      const dataset = event.currentTarget.dataset;
+      switch (dataset.competence){
+        case 'lightmelee':
+        {
+          if (this.actor.system.competences.lightmelee==true){
+            await this.actor.update ({'system.competences.lightmelee': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.lightmelee': true});
+          }
+          
+          break;
+        }
+        case 'heavymelee':
+        {
+          if (this.actor.system.competences.heavymelee==true){
+            await this.actor.update ({'system.competences.heavymelee': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.heavymelee': true});
+          }
+          
+          break;
+        }
+        case 'lightranged':
+        {
+          if (this.actor.system.competences.lightranged==true){
+            await this.actor.update ({'system.competences.lightranged': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.lightranged': true});
+          }
+          console.log (this.actor.system.competences.lightranged)
+          break;
+        }
+        case 'heavyranged':
+        {
+          if (this.actor.system.competences.heavyranged==true){
+            await this.actor.update ({'system.competences.heavyranged': false});
+          }
+          else{
+            await this.actor.update ({'system.competences.heavyranged': true});
+          }
+          
           break;
         }
       }
