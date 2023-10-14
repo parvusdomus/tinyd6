@@ -139,10 +139,15 @@ export default class TINY_NPC_SHEET extends ActorSheet{
 		  const dataset = event.currentTarget.dataset;
 		  const item = this.actor.items.get(dataset.id);
       let chatData = {}
-      let msg_content = "<p><span>"+item.name+" </span>"
-      if (item.system.tag != ""){msg_content+="<span style=\"background-color:"+item.system.bg_color+"; color:"+item.system.text_color+"\">&nbsp;"+item.system.tag+"&nbsp;</span>"}
-      msg_content+="</p>"
-      if (item.system.desc != ""){msg_content+="<hr>"+item.system.desc}
+      let msg_content = "<p><span>"+item.name+" </span></p>"
+      if (item.type == "weapon"){
+        msg_content+="<hr><p>"+item.system.competentlabel+" <i class=\"fa-solid fa-heart\"></i> "+item.system.damage+"</p>"
+      }
+      if (item.type == "armor"){
+        msg_content+="<hr><p>"+item.system.competentlabel+" <i class=\"fa-solid fa-shield\"></i> "+item.system.extralife+"</p>"
+      }
+      msg_content+=""
+      if (item.system.desc != ""){msg_content+="<hr>"+item.system.description}
       chatData = {
         content: msg_content,
       };
