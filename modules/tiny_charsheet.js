@@ -131,11 +131,12 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(armorhitpoints)+Number(this.actor.system.resources.extrahitpoints.max)
       this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
       this.actor.update ({'system.resources.totalhitpoints.max': totalhitpoints})
-      actorData.settings = {
-        
-      }
       actorData.isGM = game.user.isGM;
-
+      actorData.settings = {
+        xpMode: game.settings.get("tinyd6", "xpMode"),
+      }
+      console.log ("ACTOR")
+      console.log (this.actor)
     }
 
     //_updateInitiative(sheetData){
@@ -257,12 +258,22 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const dataset = event.currentTarget.dataset;
       let value=0;
       if (Number(dataset.number)==0){
-        if (Number(this.actor.system.resources[dataset.resource].value)==0){
-          value=1;
+        if (dataset.resource != 'sessionsplayed'){
+          if (Number(this.actor.system.resources[dataset.resource].value)==0){
+            value=1;
+          }
+          else{
+            value=0;
+          }
         }
         else{
-          value=0;
-        }
+          if (Number(this.actor.system.xp.sessionsPlayed)==0){
+            value=1;
+          }
+          else{
+            value=0;
+          }
+        }      
       }
       else{
         value=Number(dataset.number)+1
@@ -271,6 +282,11 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         case 'totalhitpoints':
         {
           this.actor.update ({'system.resources.totalhitpoints.value': value});
+          break;
+        }
+        case 'sessionsplayed':
+        {
+          this.actor.update ({'system.xp.sessionsPlayed': value});
           break;
         }
       }

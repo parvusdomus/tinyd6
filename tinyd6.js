@@ -46,6 +46,21 @@ Hooks.once("init", function(){
     config: true
   });
 
+  game.settings.register("tinyd6", "xpMode", {
+    name: game.i18n.localize("TINY.config.xpModeName"),
+    hint: game.i18n.localize("TINY.config.xpModeHint"),
+    scope: "world",
+    type: String,
+    choices: {
+      "none": game.i18n.localize("TINY.config.xpNone"),
+      "minimalistic": game.i18n.localize("TINY.config.xpMinimal"),
+      "xp": game.i18n.localize("TINY.config.xpXP")
+    },
+    default: "none",
+    requiresReload: true,
+    config: true
+  });
+
   game.settings.register('tinyd6', 'bgImage', {
     name: game.i18n.localize("TINY.config.bgImageName"),
     hint: game.i18n.localize("TINY.config.bgImageHint"),

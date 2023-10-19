@@ -54,6 +54,11 @@
     "TINY.ui.disadvantageRoll": "Disadvantage",
     "TINY.ui.focus": "Focus",
     "TINY.ui.defense": "Defense",
+    "TINY.ui.sessionsplayed": "Played Sessions",
+    "TINY.ui.experiencepoints": "Experience Points",
+    "TINY.ui.experiencepointsCurrent": "Current",
+    "TINY.ui.experiencepointsSpent": "Spent",
+    "TINY.ui.experiencepointsTotal": "Total",
 
     "TINY.config.enableCriticalName": "Enable Criticals",
     "TINY.config.enableCriticalHint": "Activate to enable Critical Successes and Failures",
@@ -96,6 +101,11 @@
     "TINY.config.buttonHeaderBgColorName": "Button Background Color",
     "TINY.config.buttonHeaderBgColorHint": "Pick a Color to be Used as the Roll Button Background Color",
     "TINY.config.buttonHeaderFontColorName": "Button Font Color",
-    "TINY.config.buttoneaderFontColorHint": "Pick a Color to be Used as the Roll Button Font Color"
+    "TINY.config.buttoneaderFontColorHint": "Pick a Color to be Used as the Roll Button Font Color",
+    "TINY.config.xpNone":"None",
+    "TINY.config.xpMinimal":"Minimalistic",
+    "TINY.config.xpXP": "Experience Points",
+    "TINY.config.xpModeName": "Advance Mode",
+    "TINY.config.xpModeHint": "Choose the Advance Mode to use."
 
 }

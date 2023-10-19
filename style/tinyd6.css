@@ -659,12 +659,34 @@
     background-size: 100% 100%;
 }
 
-.resolve-button {
-    background-color: rgba(128, 0, 0, 0.5);
-    color: white;
+.xp {
+    text-align: center;
 }
 
-.karma-button {
-    background-color: rgba(0, 128, 0, 0.5);
-    color: white;
+.xp h2,h1 {
+    font-family: var(--font-name);
+    color: var(--header-font-color);
+    border-bottom: none;
+    display: inline-block;
+}
+
+.xp table{
+    background: none;
+    border: none;
+}
+
+.item-stats {
+    text-align: center;
+}
+
+.item-stats h2,h1 {
+    font-family: var(--font-name);
+    color: var(--header-font-color);
+    border-bottom: none;
+    display: inline-block;
+}
+
+.item-stats table{
+    background: none;
+    border: none;
 }

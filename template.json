@@ -33,6 +33,12 @@
                     "max": 0
                 }
             },
+            "xp":{
+                "sessionsPlayed": 0,
+                "current": 0,
+                "spent": 0,
+                "total": 0
+            },
             "competences":{
                 "lightmelee": false,
                 "heavymelee": false,

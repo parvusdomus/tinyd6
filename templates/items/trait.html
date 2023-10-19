@@ -11,18 +11,14 @@
             </tr>
         </table>   
     </div>
-    <table>
-        <tr>
-            <td><label>Mod. Init.</label></td>
-            <td><input class="mod_input" name="system.modifies_init" type="number" maxlength="2" size="2" value="{{item.system.modifies_init}}" data-dtype="Number"/></td>
-            <td><label>Mod. Dam.</label></td>
-            <td><input class="mod_input" name="system.modifies_damage" type="number" maxlength="2" size="2" value="{{item.system.modifies_damage}}" data-dtype="Number"/></td>
-            <td><label>Mod. HP.</label></td>
-            <td><input class="mod_input" name="system.modifies_stress" type="number" maxlength="2" size="2" value="{{item.system.modifies_stress}}" data-dtype="Number"/></td>
-            <td><label>Archetype</label></td>
-            <td><input type="checkbox" {{checked item.system.archetype}} name="system.archetype"></td>
-        </tr>
-    </table>
+    <div class="item-stats">
+        <table>
+            <tr>
+                <td><label>Archetype</label><input type="checkbox" {{checked item.system.archetype}} name="system.archetype"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
     <div class="desc">
         {{editor item.system.description target="system.description" button=true owner=owner editable=true}}
     </div>

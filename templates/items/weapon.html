@@ -11,25 +11,27 @@
             </tr>
         </table>   
     </div>
-    <table>
-        <tr>
-            <td><label>Weapon Type</label></td>
-            <td>
-                <select name="system.weapontype" data-dtype="String">
-                    {{#select item.system.weapontype}}
-                      <option value="lightmelee">{{localize "TINY.competence.light_melee_full"}}</option>
-                      <option value="heavymelee">{{localize "TINY.competence.heavy_melee_full"}}</option>
-                      <option value="lightranged">{{localize "TINY.competence.light_ranged_full"}}</option>
-                      <option value="heavyranged">{{localize "TINY.competence.heavy_ranged_full"}}</option>
-                    {{/select}}
-                </select>
-            </td>
-            <td><label>Damage</label></td>
-            <td><input class="mod_input" name="system.damage" type="number" maxlength="2" size="2" value="{{item.system.damage}}" data-dtype="Number"/></td>
-            <td><label>Dominated</label></td>
-            <td><input type="checkbox" {{checked item.system.dominated}} name="system.dominated"></td>
-        </tr>
-    </table>
+    <div class="item-stats">
+        <table>
+            <tr>
+                <td><label>Weapon Type</label></td>
+                <td>
+                    <select name="system.weapontype" data-dtype="String">
+                        {{#select item.system.weapontype}}
+                          <option value="lightmelee">{{localize "TINY.competence.light_melee_full"}}</option>
+                          <option value="heavymelee">{{localize "TINY.competence.heavy_melee_full"}}</option>
+                          <option value="lightranged">{{localize "TINY.competence.light_ranged_full"}}</option>
+                          <option value="heavyranged">{{localize "TINY.competence.heavy_ranged_full"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
+                <td><label>Damage</label></td>
+                <td><input class="mod_input" name="system.damage" type="number" maxlength="2" size="2" value="{{item.system.damage}}" data-dtype="Number"/></td>
+                <td><label>Dominated</label></td>
+                <td><input type="checkbox" {{checked item.system.dominated}} name="system.dominated"></td>
+            </tr>
+        </table>
+    </div>
     <div class="desc">
         {{editor item.system.description target="system.description" button=true owner=owner editable=true}}
     </div>

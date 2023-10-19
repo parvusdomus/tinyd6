@@ -55,6 +55,11 @@
     "TINY.ui.disadvantageRoll": "Desventaja",
     "TINY.ui.focus": "Foco",
     "TINY.ui.defense": "Evasión",
+    "TINY.ui.sessionsplayed": "Sesiones Jugadas",
+    "TINY.ui.experiencepoints": "Puntos de Experiencia",
+    "TINY.ui.experiencepointsCurrent": "Actuales",
+    "TINY.ui.experiencepointsSpent": "Gastados",
+    "TINY.ui.experiencepointsTotal": "Totales",
 
     "TINY.config.enableCriticalName": "Activar Críticos",
     "TINY.config.enableCriticalHint": "Activar Éxitos y Fallos Críticos",
@@ -97,5 +102,11 @@
     "TINY.config.buttonHeaderBgColorName": "Color de Fondo de Botones",
     "TINY.config.buttonHeaderBgColorHint": "Elige el Color de Fondo para Usar en los Botones de Tiradas",
     "TINY.config.buttonHeaderFontColorName": "Color de Fuente de Botones",
-    "TINY.config.buttoneaderFontColorHint": "Elige el Color de Letra para Usar en los Botones de Tiradas"
+    "TINY.config.buttoneaderFontColorHint": "Elige el Color de Letra para Usar en los Botones de Tiradas",
+
+    "TINY.config.xpNone":"Ninguno",
+    "TINY.config.xpMinimal":"Minimalista",
+    "TINY.config.xpXP": "Puntos de Experiencia",
+    "TINY.config.xpModeName": "Modo de Avance",
+    "TINY.config.xpModeHint": "Elige que tipo de Avance de Personaje usar."
 }

@@ -1,0 +1,36 @@
+{{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
+{{#if (eq settings.xpMode "minimalistic")}}
+    <div class="xp"><h2><br /><label>{{localize "TINY.ui.sessionsplayed"}}</label><br /></h2></div>
+    <div class="xp">
+        {{#times 3}}
+            <a class="resource-change" data-resource="sessionsplayed" data-number={{.}}>
+                {{#if (gte . ../actor.system.xp.sessionsPlayed)}}
+                    <h1><i class="far fa-square"></i></h1>
+                {{else}}
+                    <h1><i class="fas fa-check-square"></i></h1>
+                {{/if}}
+            </a>
+        {{/times}}
+    </div> 
+{{/if}}
+{{#if (eq settings.xpMode "xp")}}
+    <div class="xp"><h2><br /><label>{{localize "TINY.ui.experiencepoints"}}</label><br /></h2></div>
+    <div class="xp">
+        <table>
+            <tr>
+                <td><label>{{localize "TINY.ui.experiencepointsCurrent"}}</label></td>
+                <td><input class="resource_input" name="system.xp.current" type="number" maxlength="3" size="3" value="{{actor.system.xp.current}}" data-dtype="Number"/></td>
+                <td><label>{{localize "TINY.ui.experiencepointsSpent"}}</label></td>
+                <td><input class="resource_input" name="system.xp.spent" type="number" maxlength="3" size="3" value="{{actor.system.xp.spent}}" data-dtype="Number"/></td>
+                <td><label>{{localize "TINY.ui.experiencepointsTotal"}}</label></td>
+                <td><input class="resource_input" name="system.xp.total" type="number" maxlength="3" size="3" value="{{actor.system.xp.total}}" data-dtype="Number"/></td>
+            </tr>
+        </table>
+        
+        
+        
+        
+        
+        
+    </div>
+{{/if}}
