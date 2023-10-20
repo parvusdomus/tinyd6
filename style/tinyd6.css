@@ -291,7 +291,7 @@
     text-shadow: none;
 }
 
-.sheet .tabs .item:hover {
+.sheet .tabs .item:not(.active) {
     background: var(--tab-bg-color-hover);
     color: var(--tab-text-color-hover);
     text-shadow: none;
@@ -441,8 +441,41 @@
 
 .competence table{
     background: none;
-    width: 90%;
     border: none;
+    color: var(--list-text-color);
+}
+
+.competence label{
+    color: var(--list-text-color);
+    text-align: center;
+}
+
+.competence a{
+    color: var(--list-text-color);
+}
+
+.competence input {
+    text-align: center;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+}
+
+.competence select {
+    text-align: center;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+}
+
+.stance table{
+    background: none;
+    border: none;
+    color: var(--list-text-color);
+}
+
+.stance label{
+    background: none;
+    border: none;
+    color: var(--list-text-color);
 }
 
 .resource table{
@@ -539,76 +572,9 @@
     text-align: center;
 }
 
-#die-roller-move-handle{
-    z-index: 101;
-    font-size: 1px;
-    line-height: 100%;
-    position: absolute;
-    top: 0;
-    bottom:0;
-    left: 0;
-    width: 10px;
-    background: rgba(51, 51, 51, 0.8);
-}
-
-
-.die-roller .window-header
-{
-    display: none;
-    visibility: hidden;
-    height: 0;
-}
-
-.die-roller h2{
-    font-family: var(--font-name);
-    color: var(--die-roller-font-color);
-    border-bottom: none;
-    text-align: center;
-    
-}
-
-.die-roller button{
-    color: var(--die-roller-button-font-color);
-    background-color: var(--die-roller-button-bg-color);
-}
-
 .d-flex{
     display:flex!important;
     align-items: center;
-}
-
-.die-roller input{
-    font-family: var(--font-name);
-    border-radius: 16px; 
-    background-color: var(--input-bg-color);
-    color: var(--input-text-color);
-    font-size: 1em;
-    text-align: center;
-}
-
-.subtrait {
-    list-style: none;
-    margin: -0.5em 0px;
-    padding: 0px 0px 0px 0.5em;
-}
-
-.subtrait h1 {
-    color: var(--header-font-color);
-    font-family: var(--font-name);
-    border-bottom: none;
-}
-
-.subtrait li {
-    display: inline-block;
-    padding: 5px 1px;
-    vertical-align: middle;
-}
-
-.subtrait img {
-    width: 30px;
-    height: 30px;
-    border: none;
-    margin: auto;
 }
 
 .subtable {
@@ -689,4 +655,10 @@
 .item-stats table{
     background: none;
     border: none;
+}
+
+.resource input {
+    text-align: center;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
 }

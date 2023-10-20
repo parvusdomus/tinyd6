@@ -236,36 +236,6 @@ Hooks.once("init", function(){
     default: '#ffffff',
   });
 
-  game.settings.register('tinyd6', 'dieRollerFontColor', {
-    name: game.i18n.localize("TINY.config.dieRollerFontColorName"),
-    hint: game.i18n.localize("TINY.config.dieRollerFontColorHint"),
-    scope: 'world',
-    requiresReload: true,
-    config: true,
-    type: String,
-    default: '#000000',
-  });
-
-  game.settings.register('tinyd6', 'dieRollerButtonBgColor', {
-    name: game.i18n.localize("TINY.config.dieRollerButtonBgColorName"),
-    hint: game.i18n.localize("TINY.config.dieRollerButtonBgColorHint"),
-    scope: 'world',
-    requiresReload: true,
-    config: true,
-    type: String,
-    default: '#ffffff',
-  });
-
-  game.settings.register('tinyd6', 'dieRollerButtonFontColor', {
-    name: game.i18n.localize("TINY.config.dieRollerButtonFontColorName"),
-    hint: game.i18n.localize("TINY.config.dieRollerButtonFontColorHint"),
-    scope: 'world',
-    requiresReload: true,
-    config: true,
-    type: String,
-    default: '#000000',
-  });
-
   game.settings.register('tinyd6', 'tabActiveBgColor', {
     name: game.i18n.localize("TINY.config.tabActiveBgColorName"),
     hint: game.i18n.localize("TINY.config.tabActiveBgColorHint"),
@@ -330,12 +300,6 @@ Hooks.once("init", function(){
   root.style.setProperty('--window-header-bg-color',windowHeaderBgColor) 
   let windowHeaderFontColor=game.settings.get ("tinyd6", "windowHeaderFontColor")
   root.style.setProperty('--window-header-font-color',windowHeaderFontColor) 
-  let dieRollerFontColor=game.settings.get ("tinyd6", "dieRollerFontColor")
-  root.style.setProperty('--die-roller-font-color',dieRollerFontColor) 
-  let dieRollerButtonFontColor=game.settings.get ("tinyd6", "dieRollerButtonFontColor")
-  root.style.setProperty('--die-roller-button-font-color',dieRollerButtonFontColor) 
-  let dieRollerButtonBgColor=game.settings.get ("tinyd6", "dieRollerButtonBgColor")
-  root.style.setProperty('--die-roller-button-bg-color',dieRollerButtonBgColor) 
   let tabActiveBgColor=game.settings.get ("tinyd6", "tabActiveBgColor")
   root.style.setProperty('--tab-bg-color-active',tabActiveBgColor)
   let tabActiveFontColor=game.settings.get ("tinyd6", "tabActiveFontColor")
@@ -396,12 +360,6 @@ Hooks.on('renderSettingsConfig', (app, el, data) => {
     .append(`<input type="color" value="${game.settings.get('tinyd6','windowHeaderBgColor')}" data-edit="tinyd6.windowHeaderBgColor">`)
   el.find('[name="tinyd6.windowHeaderFontColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','windowHeaderFontColor')}" data-edit="tinyd6.windowHeaderFontColor">`)
-  el.find('[name="tinyd6.dieRollerFontColor"]').parent()
-    .append(`<input type="color" value="${game.settings.get('tinyd6','dieRollerFontColor')}" data-edit="tinyd6.dieRollerFontColor">`)
-  el.find('[name="tinyd6.dieRollerButtonBgColor"]').parent()
-    .append(`<input type="color" value="${game.settings.get('tinyd6','dieRollerButtonBgColor')}" data-edit="tinyd6.dieRollerButtonBgColor">`)
-  el.find('[name="tinyd6.dieRollerButtonFontColor"]').parent()
-    .append(`<input type="color" value="${game.settings.get('tinyd6','dieRollerButtonFontColor')}" data-edit="tinyd6.dieRollerButtonFontColor">`)
   el.find('[name="tinyd6.tabActiveBgColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','tabActiveBgColor')}" data-edit="tinyd6.tabActiveBgColor">`)
   el.find('[name="tinyd6.tabActiveFontColor"]').parent()

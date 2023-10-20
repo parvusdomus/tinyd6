@@ -2,7 +2,7 @@
   <div class="charsheet">
     <section class="left-section">
       <div class="char-name"><h2><input name="name" type="text" value="{{actor.name}}" placeholder='Nombre' onClick="this.select();"/></h2></div>
-      <table>
+      <div class="competence"><table>
         <tr>
           <td>
             <label>{{localize "TINY.ui.focus"}}</label>
@@ -16,13 +16,13 @@
             <input type="checkbox" {{checked actor.system.defense}} name="system.defense">
           </td>
         </tr>
-      </table>
+      </table></div>
       <a class="dice-roll">
         <div>
-          <h1><label>{{localize "TINY.ui.roll"}}</label></h1>
+          <h1><label>&nbsp;&nbsp;{{localize "TINY.ui.roll"}}&nbsp;&nbsp;</label></h1>
         </div>
       </a>
-      <div class="competence">
+      <div class="dominated competence">
         <label>{{localize "TINY.competence.weapon"}}</label>
         <table>
           <tr>
@@ -61,11 +61,11 @@
           </tr>
         </table>
       </div>
-      <div class="dominated">
+      <div class="dominated resource competence">
           <label>{{localize "TINY.dominate.weapon"}}</label>
           <input name="system.weapondominated" type="text" value="{{actor.system.weapondominated}}" placeholder='{{localize "TINY.dominate.weapon"}}' data-dtype="String"/>
       </div>
-        <table>
+        <table class="resource competence">
           <tr>
             <td>
               <label>{{localize "TINY.resources.hitpoints"}}</label>
@@ -75,7 +75,7 @@
             </td>
           </tr>
         </table>
-      <div class="resources">
+      <div class="resources competence">
           {{#times actor.system.resources.totalhitpoints.max}}
               <a class="resource-change" data-resource="totalhitpoints" data-number={{.}}>
                 {{#if (gte . ../actor.system.resources.totalhitpoints.value)}}
