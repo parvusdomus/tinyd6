@@ -25,14 +25,14 @@
                         {{/select}}
                     </select>
                 </td>
-                <td><label>Damage</label></td>
-                <td><input class="mod_input" name="system.damage" type="number" maxlength="2" size="2" value="{{item.system.damage}}" data-dtype="Number"/></td>
-                <td><label>Dominated</label></td>
+                <td><label>{{localize "TINY.ui.damage"}}</label></td>
+                <td><input class="mod_input" style="width:100%;" name="system.damage" type="string" maxlength="5" size="5" value="{{item.system.damage}}" data-dtype="String"/></td>
+                <td><label>{{localize "TINY.ui.dominate"}}</label></td>
                 <td><input type="checkbox" {{checked item.system.dominated}} name="system.dominated"></td>
             </tr>
             <tr>
                 <td><label>{{localize "TINY.ui.slots"}}&nbsp;</label></td>
-                <td><input class="mod_input" name="system.slots" type="number" maxlength="2" size="2" value="{{item.system.slots}}" data-dtype="Number"/></td>
+                <td><input class="mod_input" style="width: 50%;" name="system.slots" type="number" maxlength="2" size="2" value="{{item.system.slots}}" data-dtype="Number"/></td>
                 <td><label>{{localize "TINY.ui.depletion"}}&nbsp;</label></td>
                 <td><input class="mod_input" name="system.durability" type="number" maxlength="2" size="2" value="{{item.system.durability}}" data-dtype="Number"/></td>
             </tr>

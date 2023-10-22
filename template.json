@@ -113,7 +113,7 @@
             "equipped": false,
             "dominated": false,
             "weapontype": "lightmelee",
-            "damage": 1,
+            "damage": "1",
             "modifiesinit": 0,
             "modifiesdamage": 0,
             "modifiesstress": 0,

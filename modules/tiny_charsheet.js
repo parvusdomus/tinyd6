@@ -169,6 +169,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
       html.find('a.competence-toggle').click(this._onCompetenceToggle.bind(this));
       html.find('a.durability-roll').click(this._onDurabilityRoll.bind(this));
+      html.find('a.damage-roll').click(this._onDamageRoll.bind(this));
     }
 
     _onItemCreate(event) {
@@ -254,6 +255,45 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         testResult="<h3 class=\"regular-success\">"+game.i18n.localize("TINY.ui.regularSuccess")+"</h3>"
       }
       dados.push(d6Roll.terms[0].results[0].result);
+      let renderedRoll = await renderTemplate("systems/tinyd6/templates/chat/test-result.html", { 
+        rollResult: d6Roll, 
+        actor_id: actor_id,
+        dados:dados,
+        nDice: 1,
+        rollText: rollText,
+        nDiff: 1,
+        canSpendKarma: false,
+        testResult: testResult
+      });
+
+      const chatData = {
+        speaker: ChatMessage.getSpeaker(),
+        content: renderedRoll
+    };
+
+    d6Roll.toMessage(chatData);
+
+		  return;
+    }
+
+    async _onDamageRoll(event, data)
+	  {
+      event.preventDefault();
+		  const dataset = event.currentTarget.dataset;
+		  const item = this.actor.items.get(dataset.id);
+      let tirada=item.system.damage;
+      let dados=[];
+      let testResult=""
+      let actor_id = ChatMessage.getSpeaker().actor;
+      let durability = item.system.durability;
+      if (durability <=0){
+        ui.notifications.warn(game.i18n.localize("TINY.ui.brokenObject"));
+        return;
+      }
+      let rollText="<label>"+item.name+":  "+game.i18n.localize("TINY.ui.damage")+"</label>"
+      let d6Roll = await new Roll(String(tirada)).roll({async: false});
+      testResult="<h3 class=\"damage\">"+game.i18n.localize("TINY.ui.damage")+"</h3>"
+      dados.push(d6Roll.total);
       let renderedRoll = await renderTemplate("systems/tinyd6/templates/chat/test-result.html", { 
         rollResult: d6Roll, 
         actor_id: actor_id,

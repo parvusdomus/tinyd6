@@ -616,6 +616,11 @@
     color: white;
 }
 
+.damage {
+    background-color: rgb(128, 0, 0);
+    color: white;
+}
+
 .disabled {
     background-color: rgba(128, 128, 128, 0.5);
     color: white;

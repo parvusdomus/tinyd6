@@ -80,6 +80,16 @@ Hooks.once("init", function(){
     requiresReload: true,
     config: true
   });
+  
+  game.settings.register("tinyd6", "enableDamageReduction", {
+    name: game.i18n.localize("TINY.config.enableDamageReductionName"),
+    hint: game.i18n.localize("TINY.config.enableDamageReductionHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
 
   game.settings.register('tinyd6', 'bgImage', {
     name: game.i18n.localize("TINY.config.bgImageName"),
