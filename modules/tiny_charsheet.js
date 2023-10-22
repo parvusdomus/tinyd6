@@ -242,6 +242,10 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
           durability--;
           item.update ({'system.durability': durability})
         }
+        if (durability <= 0){
+          item.update ({'system.equipped': false})
+          ui.notifications.warn(game.i18n.localize("TINY.ui.brokenObject"));
+        }
       }
       else {
         testResult="<h3 class=\"regular-success\">"+game.i18n.localize("TINY.ui.regularSuccess")+"</h3>"
@@ -273,11 +277,15 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       event.preventDefault();
 		  const dataset = event.currentTarget.dataset;
 		  const item = this.actor.items.get(dataset.id);
-      console.log (item)
+      let enableDurability = game.settings.get('tinyd6', 'enableDurability');
 		  if (item.system.equipped==true){
         item.update ({'system.equipped': false})
       }
       else{
+        if ((enableDurability == true) && (item.system.durability <= 0)){
+          ui.notifications.warn(game.i18n.localize("TINY.ui.brokenObject"));
+          return;
+        }
         if (item.type=="armor"){
           for (let i of this.actor.items){
             if ((i.type=="armor")&&(i.system.equipped==true)){
@@ -287,7 +295,6 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         }
         item.update ({'system.equipped': true})
       }
-      console.log (item)
 		  return;
     }
     

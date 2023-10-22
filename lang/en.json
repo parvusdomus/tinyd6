@@ -48,6 +48,7 @@
     "TINY.ui.regularFailure": "Failure",
     "TINY.ui.criticalFailure": "Critical Failure!",
     "TINY.ui.cantAddMore": "Can't add more of that item to this sheet.",
+    "TINY.ui.brokenObject": "This Object is BROKEN!!",
  
     "TINY.ui.diceRoll": "Dice Roll.",
     "TINY.ui.advantageRoll": "Advantage",

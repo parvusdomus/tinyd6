@@ -30,9 +30,19 @@
                 <td>
                     <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Arma'/>
                 </td>
-                <td>
-                    <label>{{item.name}}&nbsp;</label>   
-                </td>
+                {{#if ../settings.enableDurability}}
+                    <td>
+                        {{#if (gt item.system.durability 0)}}
+                            <label>{{item.name}}&nbsp;</label>   
+                        {{else}}
+                            <label style="text-decoration:line-through;">{{item.name}}&nbsp;</label> 
+                        {{/if}}
+                    </td>
+                {{else}}
+                    <td>
+                        <label>{{item.name}}&nbsp;</label>   
+                    </td>
+                {{/if}}
                 <td>
                     <label>{{item.system.damage}}</label>
                 </td>
@@ -84,9 +94,19 @@
             <td>
                 <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Arma'/>
             </td>
-            <td>
-                <label>{{item.name}}&nbsp;</label>
-            </td>
+            {{#if ../settings.enableDurability}}
+                    <td>
+                        {{#if (gt item.system.durability 0)}}
+                            <label>{{item.name}}&nbsp;</label>   
+                        {{else}}
+                            <label style="text-decoration:line-through;">{{item.name}}&nbsp;</label> 
+                        {{/if}}
+                    </td>
+                {{else}}
+                    <td>
+                        <label>{{item.name}}&nbsp;</label>   
+                    </td>
+                {{/if}}
             <td>
                 <label>{{item.system.extralife}}</label>
             </td>
@@ -129,9 +149,19 @@
             <td>
                 <img class="item-img" src="{{item.img}}" data-edit="img" title="{{name}}" alt='Imagen del Arma'/>
             </td>
-            <td>
-                <label>{{item.name}}&nbsp;</label>
-            </td>
+            {{#if ../settings.enableDurability}}
+                <td>
+                    {{#if (gt item.system.durability 0)}}
+                        <label>{{item.name}}&nbsp;</label>   
+                    {{else}}
+                        <label style="text-decoration:line-through;">{{item.name}}&nbsp;</label> 
+                    {{/if}}
+                </td>
+            {{else}}
+                <td>
+                    <label>{{item.name}}&nbsp;</label>   
+                </td>
+            {{/if}}
             <td></td>
             <td>
                 {{#if ../settings.enableSlots}}
