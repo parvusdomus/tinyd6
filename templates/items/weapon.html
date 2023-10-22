@@ -30,6 +30,10 @@
                 <td><label>Dominated</label></td>
                 <td><input type="checkbox" {{checked item.system.dominated}} name="system.dominated"></td>
             </tr>
+            <tr>
+                <td><label>{{localize "TINY.ui.slots"}}&nbsp;</label></td>
+                <td><input class="mod_input" name="system.slots" type="number" maxlength="2" size="2" value="{{item.system.slots}}" data-dtype="Number"/></td>
+            </tr>
         </table>
     </div>
     <div class="desc">

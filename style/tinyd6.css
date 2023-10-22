@@ -209,6 +209,12 @@
     border-bottom: none;
 }
 
+.right-section h2{
+    font-family: var(--font-name);
+    color: var(--header-font-color);
+    border-bottom: none;
+}
+
 .left-section h1{
     font-family: var(--font-name);
     color: var(--button-font-color);
@@ -662,3 +668,19 @@
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
 }
+
+.blink {
+    animation: blink 1s steps(1, end) infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

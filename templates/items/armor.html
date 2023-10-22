@@ -14,7 +14,7 @@
     <div class="item-stats competence">
         <table>
             <tr>
-                <td><label>{{localize "TINY.ui.type"}}</label></td>
+                <td><label>{{localize "TINY.ui.type"}}&nbsp;</label></td>
                 <td>
                     <select name="system.armortype" data-dtype="String">
                         {{#select item.system.armortype}}
@@ -24,10 +24,10 @@
                         {{/select}}
                     </select>
                 </td>
-                <td><label>{{localize "TINY.ui.value"}}</label></td>
+                <td><label>{{localize "TINY.ui.value"}}&nbsp;</label></td>
                 <td><input class="mod_input" name="system.extralife" type="number" maxlength="2" size="2" value="{{item.system.extralife}}" data-dtype="Number"/></td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td><label>{{localize "TINY.ui.slots"}}&nbsp;</label></td>
+                <td><input class="mod_input" name="system.slots" type="number" maxlength="2" size="2" value="{{item.system.slots}}" data-dtype="Number"/></td>
              </tr>
         </table>
     </div>

@@ -61,6 +61,16 @@ Hooks.once("init", function(){
     config: true
   });
 
+  game.settings.register("tinyd6", "enableSlots", {
+    name: game.i18n.localize("TINY.config.enableSlotsName"),
+    hint: game.i18n.localize("TINY.config.enableSlotsHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
+
   game.settings.register('tinyd6', 'bgImage', {
     name: game.i18n.localize("TINY.config.bgImageName"),
     hint: game.i18n.localize("TINY.config.bgImageHint"),
@@ -368,7 +378,6 @@ Hooks.on('renderSettingsConfig', (app, el, data) => {
     .append(`<input type="color" value="${game.settings.get('tinyd6','tabHoverBgColor')}" data-edit="tinyd6.tabHoverBgColor">`)
   el.find('[name="tinyd6.tabHoverFontColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','tabHoverFontColor')}" data-edit="tinyd6.tabHoverFontColor">`)
-
   el.find('[name="tinyd6.buttonHeaderBgColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','buttonHeaderBgColor')}" data-edit="tinyd6.buttonHeaderBgColor">`)
   el.find('[name="tinyd6.buttonHeaderFontColor"]').parent()

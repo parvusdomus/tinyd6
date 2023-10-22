@@ -35,6 +35,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const EquippedWeapons = [];
       const EquippedArmors =[];
       let armorhitpoints=0;
+      let totalSlots=0;
       for (let i of sheetData.items){
         switch (i.type){
 				  case 'trait':
@@ -84,11 +85,14 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
             if (i.system.equipped==true){
               EquippedWeapons.push(i);
             }
+            totalSlots+=item.system.slots;
 					  break;			  
 				  }
           case 'item':
           {
+            const item = this.actor.items.get(i._id);
             Items.push(i);
+            totalSlots+=item.system.slots;
             break;			  
           }
           case 'armor':
@@ -116,6 +120,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
               armorhitpoints=item.system.extralife;
               EquippedArmors.push(i);
             }
+            totalSlots+=item.system.slots;
             break;			  
           }
           
@@ -134,9 +139,9 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       actorData.isGM = game.user.isGM;
       actorData.settings = {
         xpMode: game.settings.get("tinyd6", "xpMode"),
+        enableSlots: game.settings.get("tinyd6", "enableSlots"),
       }
-      console.log ("ACTOR")
-      console.log (this.actor)
+      this.actor.update ({'system.resources.slots.value': totalSlots})
     }
 
     //_updateInitiative(sheetData){
