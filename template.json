@@ -107,7 +107,7 @@
         },
         "weapon": {
             "slots": 1,
-            "durability": 1,
+            "durability": 6,
             "competent": false,
             "competentlabel": "",
             "equipped": false,
@@ -123,7 +123,7 @@
         "item": {
             "slots": 1,
             "equipped": false,
-            "durability": 1,
+            "durability": 6,
             "modifiesinit": 0,
             "modifiesdamage": 0,
             "modifiesstress": 0,
@@ -135,7 +135,7 @@
             "equipped": false,
             "armortype": "light",
             "competentlabel": "L",
-            "durability": 1,
+            "durability": 6,
             "modifiesinit": 0,
             "modifiesdamage": 0,
             "modifiesstress": 0,

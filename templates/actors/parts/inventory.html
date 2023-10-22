@@ -51,6 +51,12 @@
                         <label>&nbsp;{{item.system.slots}}</label>
                         <i class="fa-solid fa-weight-hanging"></i>
                     {{/if}}
+                    {{#if ../settings.enableDurability}}
+                        <a class="durability-roll" data-id="{{item._id}}">
+                            <label>&nbsp;{{item.system.durability}}</label>
+                            <i class="fa-solid fa-wrench"></i>
+                        </a>
+                    {{/if}}
                 </td>
                 <td class="item-controls">
                     <a class="item-equip" data-id="{{item._id}}">
@@ -90,6 +96,12 @@
                     <label>&nbsp;{{item.system.slots}}</label>
                     <i class="fa-solid fa-weight-hanging"></i>
                 {{/if}}
+                {{#if ../settings.enableDurability}}
+                    <a class="durability-roll" data-id="{{item._id}}">
+                        <label>&nbsp;{{item.system.durability}}</label>
+                        <i class="fa-solid fa-wrench"></i>
+                    </a>
+                {{/if}}
             </td>
             <td class="item-controls">
                 <a class="item-equip" data-id="{{item._id}}">
@@ -125,6 +137,12 @@
                 {{#if ../settings.enableSlots}}
                     <label>&nbsp;{{item.system.slots}}</label>
                     <i class="fa-solid fa-weight-hanging"></i>
+                {{/if}}
+                {{#if ../settings.enableDurability}}
+                    <a class="durability-roll" data-id="{{item._id}}">
+                        <label>&nbsp;{{item.system.durability}}</label>
+                        <i class="fa-solid fa-wrench"></i>
+                    </a>
                 {{/if}}
             </td>
             <td class="item-controls">

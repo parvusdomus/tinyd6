@@ -140,6 +140,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       actorData.settings = {
         xpMode: game.settings.get("tinyd6", "xpMode"),
         enableSlots: game.settings.get("tinyd6", "enableSlots"),
+        enableDurability: game.settings.get("tinyd6", "enableDurability"),
       }
       this.actor.update ({'system.resources.slots.value': totalSlots})
     }
@@ -167,6 +168,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       html.find('a.resource-change').click(this._onResourceChange.bind(this));
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
       html.find('a.competence-toggle').click(this._onCompetenceToggle.bind(this));
+      html.find('a.durability-roll').click(this._onDurabilityRoll.bind(this));
     }
 
     _onItemCreate(event) {
@@ -205,10 +207,13 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       let chatData = {}
       let msg_content = "<p><span>"+item.name+" </span></p>"
       if (item.type == "weapon"){
-        msg_content+="<hr><p>"+item.system.competentlabel+" <i class=\"fa-solid fa-heart\"></i> "+item.system.damage+"</p>"
+        msg_content+="<hr><p>"+item.system.competentlabel+" <i class=\"fa-solid fa-heart\"></i> "+item.system.damage+" <i class=\"fa-solid fa-weight-hanging\"></i> "+item.system.slots+" <i class=\"fa-solid fa-wrench\"></i> "+item.system.durability+"</p>"
       }
       if (item.type == "armor"){
-        msg_content+="<hr><p>"+item.system.competentlabel+" <i class=\"fa-solid fa-shield\"></i> "+item.system.extralife+"</p>"
+        msg_content+="<hr><p>"+item.system.competentlabel+" <i class=\"fa-solid fa-shield\"></i> "+item.system.extralife+" <i class=\"fa-solid fa-weight-hanging\"></i> "+item.system.slots+" <i class=\"fa-solid fa-wrench\"></i> "+item.system.durability+"</p>"
+      }
+      if (item.type == "item"){
+        msg_content+="<hr><p><i class=\"fa-solid fa-weight-hanging\"></i> "+item.system.slots+" <i class=\"fa-solid fa-wrench\"></i> "+item.system.durability+"</p>"
       }
       msg_content+=""
       if (item.system.desc != ""){msg_content+="<hr>"+item.system.description}
@@ -216,6 +221,50 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         content: msg_content,
       };
       ChatMessage.create(chatData);
+		  return;
+    }
+
+    async _onDurabilityRoll(event, data)
+	  {
+      event.preventDefault();
+		  const dataset = event.currentTarget.dataset;
+		  const item = this.actor.items.get(dataset.id);
+      let tirada="1d6"
+      let dados=[];
+      let testResult=""
+      let actor_id = ChatMessage.getSpeaker().actor;
+      let durability = item.system.durability;
+      let rollText="<label>"+item.name+":  Durabilidad</label>"
+      let d6Roll = await new Roll(String(tirada)).roll({async: false});
+      if (d6Roll.terms[0].results[0].result <= 1){
+        testResult="<h3 class=\"regular-failure\">"+game.i18n.localize("TINY.ui.regularFailure")+"</h3>"
+        if (durability > 0){
+          durability--;
+          item.update ({'system.durability': durability})
+        }
+      }
+      else {
+        testResult="<h3 class=\"regular-success\">"+game.i18n.localize("TINY.ui.regularSuccess")+"</h3>"
+      }
+      dados.push(d6Roll.terms[0].results[0].result);
+      let renderedRoll = await renderTemplate("systems/tinyd6/templates/chat/test-result.html", { 
+        rollResult: d6Roll, 
+        actor_id: actor_id,
+        dados:dados,
+        nDice: 1,
+        rollText: rollText,
+        nDiff: 1,
+        canSpendKarma: false,
+        testResult: testResult
+      });
+
+      const chatData = {
+        speaker: ChatMessage.getSpeaker(),
+        content: renderedRoll
+    };
+
+    d6Roll.toMessage(chatData);
+
 		  return;
     }
 

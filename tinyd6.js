@@ -71,6 +71,16 @@ Hooks.once("init", function(){
     config: true
   });
 
+  game.settings.register("tinyd6", "enableDurability", {
+    name: game.i18n.localize("TINY.config.enableDurabilityName"),
+    hint: game.i18n.localize("TINY.config.enableDurabilityHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
+
   game.settings.register('tinyd6', 'bgImage', {
     name: game.i18n.localize("TINY.config.bgImageName"),
     hint: game.i18n.localize("TINY.config.bgImageHint"),
