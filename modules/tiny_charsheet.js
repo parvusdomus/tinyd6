@@ -234,7 +234,10 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       let testResult=""
       let actor_id = ChatMessage.getSpeaker().actor;
       let durability = item.system.durability;
-      let rollText="<label>"+item.name+":  Durabilidad</label>"
+      if (durability <=0){
+        return;
+      }
+      let rollText="<label>"+item.name+":  "+game.i18n.localize("TINY.ui.depletion")+"</label>"
       let d6Roll = await new Roll(String(tirada)).roll({async: false});
       if (d6Roll.terms[0].results[0].result <= 1){
         testResult="<h3 class=\"regular-failure\">"+game.i18n.localize("TINY.ui.regularFailure")+"</h3>"
