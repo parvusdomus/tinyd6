@@ -486,7 +486,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       if (this.actor.system.defense){
         html_content+=' checked'
       } 
-      html_content+=' name="defense" id="defense"></td></tr></table>'
+      html_content+=' name="defense" id="defense"></td><td><label>'+game.i18n.localize("TINY.ui.marksman")+'</label><input type="checkbox" name="marksman" id="marksman"></td></tr></table>'
 
       let d = new Dialog({
         title: game.i18n.localize("TINY.ui.diceRoll"),
@@ -498,7 +498,8 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
           callback: () => {
             let focus=document.getElementById("focus").checked;
             let defense=document.getElementById("defense").checked;
-            DiceRoll('desventaja',focus,defense)
+            let marksman=document.getElementById("marksman").checked;
+            DiceRoll('desventaja',focus,defense,marksman)
             this.actor.update ({'system.focus': focus});
             this.actor.update ({'system.defense': defense});
           }
@@ -509,7 +510,8 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
           callback: () => {
             let focus=document.getElementById("focus").checked;
             let defense=document.getElementById("defense").checked;
-            DiceRoll('normal',focus,defense)
+            let marksman=document.getElementById("marksman").checked;
+            DiceRoll('normal',focus,defense,marksman)
             this.actor.update ({'system.focus': focus});
             this.actor.update ({'system.defense': defense});
           }
@@ -520,7 +522,8 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
           callback: () => {
             let focus=document.getElementById("focus").checked;
             let defense=document.getElementById("defense").checked;
-            DiceRoll('ventaja',focus,defense)
+            let marksman=document.getElementById("marksman").checked;
+            DiceRoll('ventaja',focus,defense,marksman)
             this.actor.update ({'system.focus': focus});
             this.actor.update ({'system.defense': defense});
           }

@@ -1,4 +1,4 @@
-export async function DiceRoll(rollType, focus, defense)
+export async function DiceRoll(rollType, focus, defense, marksman)
 {
     let tirada= ""
     let testResult=""
@@ -30,6 +30,9 @@ export async function DiceRoll(rollType, focus, defense)
     let difficulty=5;
     if (focus==true){
         difficulty=4;
+        if (marksman==true){
+            difficulty=3;
+        }
     }
     if (defense=true){
         
