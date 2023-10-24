@@ -1,7 +1,7 @@
 import {DiceRoll} from "../modules/rolls.js";
 export default class TINY_CHAR_SHEET extends ActorSheet{
     static get defaultOptions() {
-      let adjusted_height= 650;
+      let adjusted_height= 670;
       //if (game.settings.get("tinyd6", "enableSubTraits")==true || game.settings.get("tinyd6", "enableSubStyles")==true){
       //  adjusted_height+=130;
       //}
@@ -141,6 +141,11 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         xpMode: game.settings.get("tinyd6", "xpMode"),
         enableSlots: game.settings.get("tinyd6", "enableSlots"),
         enableDurability: game.settings.get("tinyd6", "enableDurability"),
+        enablePowerOrigin: game.settings.get("tinyd6", "enablePowerOrigin"),
+        enableRadiation: game.settings.get("tinyd6", "enableRadiation"),
+        enableGrit: game.settings.get("tinyd6", "enableGrit"),
+        enablePanic: game.settings.get("tinyd6", "enablePanic"),
+        enableCorruption: game.settings.get("tinyd6", "enableCorruption"),
       }
       this.actor.update ({'system.resources.slots.value': totalSlots})
     }
@@ -391,6 +396,26 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
         case 'sessionsplayed':
         {
           this.actor.update ({'system.xp.sessionsPlayed': value});
+          break;
+        }
+        case 'radiation':
+        {
+          this.actor.update ({'system.resources.radiation.value': value});
+          break;
+        }
+        case 'grit':
+        {
+          this.actor.update ({'system.resources.grit.value': value});
+          break;
+        }
+        case 'panic':
+        {
+          this.actor.update ({'system.resources.panic.value': value});
+          break;
+        }
+        case 'corruption':
+        {
+          this.actor.update ({'system.resources.corruption.value': value});
           break;
         }
       }

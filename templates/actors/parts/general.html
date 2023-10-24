@@ -7,6 +7,14 @@
 <ul class="archetype">
     <li><input name="system.belief" type="text" value="{{actor.system.belief}}" placeholder='{{localize "TINY.ui.belief"}}' data-dtype="String"/></li>
 </ul>
+{{#if settings.enablePowerOrigin}}
+    <ul class="archetype">
+        <li><input name="system.origin" type="text" value="{{actor.system.origin}}" placeholder='{{localize "TINY.ui.origin"}}' data-dtype="String"/></li>
+    </ul>
+    <ul class="archetype">
+        <li><input name="system.weakness" type="text" value="{{actor.system.weakness}}" placeholder='{{localize "TINY.ui.weakness"}}' data-dtype="String"/></li>
+    </ul>
+{{/if}}
 <table class="item-list">
     <tr>
         <th></th>

@@ -88,6 +88,56 @@ Hooks.once("init", function(){
     type: Boolean,
     default: false,
     requiresReload: true,
+    config: false
+  });
+
+  game.settings.register("tinyd6", "enablePowerOrigin", {
+    name: game.i18n.localize("TINY.config.enablePowerOriginName"),
+    hint: game.i18n.localize("TINY.config.enablePowerOriginHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
+
+  game.settings.register("tinyd6", "enableRadiation", {
+    name: game.i18n.localize("TINY.config.enableRadiationName"),
+    hint: game.i18n.localize("TINY.config.enableRadiationHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
+
+  game.settings.register("tinyd6", "enableGrit", {
+    name: game.i18n.localize("TINY.config.enableGritName"),
+    hint: game.i18n.localize("TINY.config.enableGritHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
+
+  game.settings.register("tinyd6", "enablePanic", {
+    name: game.i18n.localize("TINY.config.enablePanicName"),
+    hint: game.i18n.localize("TINY.config.enablePanicHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
+    config: true
+  });
+
+  game.settings.register("tinyd6", "enableCorruption", {
+    name: game.i18n.localize("TINY.config.enableCorruptionName"),
+    hint: game.i18n.localize("TINY.config.enableCorruptionHint"),
+    scope: "world",
+    type: Boolean,
+    default: false,
+    requiresReload: true,
     config: true
   });
 

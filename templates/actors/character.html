@@ -30,33 +30,33 @@
             <td><label>{{localize "TINY.competence.light_melee"}}</label></td>
             <td>
               {{#if (eq actor.system.competences.lightmelee true)}}
-                <a class="competence-toggle" data-competence="lightmelee"><i class="far fa-check-square"></i></a>
+                <a class="competence-toggle" data-competence="lightmelee"><i class="fas fa-check-square"></i></a>
               {{else}}
-                <a class="competence-toggle" data-competence="lightmelee"><i class="fa-regular fa-square"></i></a>
+                <a class="competence-toggle" data-competence="lightmelee"><i class="far fa-square"></i></a>
               {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.heavy_melee"}}</label></td>
             <td>
               {{#if (eq actor.system.competences.heavymelee true)}}
-                <a class="competence-toggle" data-competence="heavymelee"><i class="far fa-check-square"></i></a>
+                <a class="competence-toggle" data-competence="heavymelee"><i class="fas fa-check-square"></i></a>
               {{else}}
-                <a class="competence-toggle" data-competence="heavymelee"><i class="fa-regular fa-square"></i></a>
+                <a class="competence-toggle" data-competence="heavymelee"><i class="far fa-square"></i></a>
               {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.light_ranged"}}</label></td>
             <td>
               {{#if (eq actor.system.competences.lightranged true)}}
-                <a class="competence-toggle" data-competence="lightranged"><i class="far fa-check-square"></i></a>
+                <a class="competence-toggle" data-competence="lightranged"><i class="fas fa-check-square"></i></a>
               {{else}}
-                <a class="competence-toggle" data-competence="lightranged"><i class="fa-regular fa-square"></i></a>
+                <a class="competence-toggle" data-competence="lightranged"><i class="far fa-square"></i></a>
               {{/if}}
             </td>
             <td><label>{{localize "TINY.competence.heavy_ranged"}}</label></td>
             <td>
               {{#if (eq actor.system.competences.heavyranged true)}}
-                <a class="competence-toggle" data-competence="heavyranged"><i class="far fa-check-square"></i></a>
+                <a class="competence-toggle" data-competence="heavyranged"><i class="fas fa-check-square"></i></a>
               {{else}}
-                <a class="competence-toggle" data-competence="heavyranged"><i class="fa-regular fa-square"></i></a>
+                <a class="competence-toggle" data-competence="heavyranged"><i class="far fa-square"></i></a>
               {{/if}}
             </td>
           </tr>
@@ -66,6 +66,7 @@
           <h2><label>{{localize "TINY.dominate.weapon"}}</label></h2>
           <input name="system.weapondominated" type="text" value="{{actor.system.weapondominated}}" placeholder='{{localize "TINY.dominate.weapon"}}' data-dtype="String"/>
       </div>
+
       <h2 class="resource">
         <table>
           <tr>
@@ -79,17 +80,116 @@
         </table>
       </h2>
       <div class="resources competence">
-          {{#times actor.system.resources.totalhitpoints.max}}
-              <a class="resource-change" data-resource="totalhitpoints" data-number={{.}}>
-                {{#if (gte . ../actor.system.resources.totalhitpoints.value)}}
-                  <h2><i class="far fa-square"></i></h2>
-                {{else}}
-                  <h2><i class="fas fa-check-square"></i></h2>
-                {{/if}}
-              </a>
-          {{/times}}
-          
+        {{#times actor.system.resources.totalhitpoints.max}}
+          <a class="resource-change" data-resource="totalhitpoints" data-number={{.}}>
+            {{#if (gte . ../actor.system.resources.totalhitpoints.value)}}
+              <i class="far fa-square"></i>
+            {{else}}
+              <i class="fas fa-check-square"></i>
+            {{/if}}
+          </a>
+        {{/times}}    
       </div>
+      {{#if settings.enableRadiation}}
+        <h2 class="resource">
+          <table>
+            <tr>
+              <td>
+                <label>{{localize "TINY.resources.radiation"}}</label>
+              </td>
+              <td style="width:20%;">
+                <input class="resource_input" name="system.resources.radiation.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.radiation.max}}" data-dtype="Number"/>
+              </td>
+            </tr>
+          </table>
+        </h2>
+        <div class="resources competence">
+          {{#times actor.system.resources.radiation.max}}
+            <a class="resource-change" data-resource="radiation" data-number={{.}}>
+              {{#if (gte . ../actor.system.resources.radiation.value)}}
+                <i class="far fa-square"></i>
+              {{else}}
+                <i class="fas fa-check-square"></i>
+              {{/if}}
+            </a>
+          {{/times}}
+        </div>
+      {{/if}}
+      {{#if settings.enableGrit}}
+        <h2 class="resource">
+          <table>
+            <tr>
+              <td>
+                <label>{{localize "TINY.resources.grit"}}</label>
+              </td>
+              <td style="width:20%;">
+                <input class="resource_input" name="system.resources.grit.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.grit.max}}" data-dtype="Number"/>
+              </td>
+            </tr>
+          </table>
+        </h2>
+        <div class="resources competence">
+          {{#times actor.system.resources.grit.max}}
+            <a class="resource-change" data-resource="grit" data-number={{.}}>
+              {{#if (gte . ../actor.system.resources.grit.value)}}
+                <i class="far fa-square"></i>
+              {{else}}
+                <i class="fas fa-check-square"></i>
+              {{/if}}
+            </a>
+          {{/times}}
+        </div>
+      {{/if}}
+      {{#if settings.enablePanic}}
+        <h2 class="resource">
+          <table>
+            <tr>
+              <td>
+                <label>{{localize "TINY.resources.panic"}}</label>
+              </td>
+              <td style="width:20%;">
+                <input class="resource_input" name="system.resources.panic.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.panic.max}}" data-dtype="Number"/>
+              </td>
+            </tr>
+          </table>
+        </h2>
+        <div class="resources competence">
+          {{#times actor.system.resources.panic.max}}
+            <a class="resource-change" data-resource="panic" data-number={{.}}>
+              {{#if (gte . ../actor.system.resources.panic.value)}}
+                <i class="far fa-square"></i>
+              {{else}}
+                <i class="fas fa-check-square"></i>
+              {{/if}}
+            </a>
+          {{/times}}
+        </div>
+      {{/if}}
+      {{#if settings.enableCorruption}}
+        <h2 class="resource">
+          <table>
+            <tr>
+              <td>
+                <label>{{localize "TINY.resources.corruption"}}</label>
+              </td>
+              <td style="width:20%;">
+                <input class="resource_input" name="system.resources.corruption.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.corruption.max}}" data-dtype="Number"/>
+              </td>
+            </tr>
+          </table>
+        </h2>
+        <div class="resources competence">
+          {{#times actor.system.resources.corruption.max}}
+            <a class="resource-change" data-resource="corruption" data-number={{.}}>
+              {{#if (gte . ../actor.system.resources.corruption.value)}}
+                <i class="far fa-square"></i>
+              {{else}}
+                <i class="fas fa-check-square"></i>
+              {{/if}}
+            </a>
+          {{/times}}
+        </div>
+      {{/if}}
     </section>
     
     <section class="right-section">
