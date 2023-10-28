@@ -1,0 +1,74 @@
+<table class="resource competence">
+    <tr>
+        <td>
+            <label>{{localize "TINY.resources.supplies"}}</label>
+        </td>
+        <td style="width:10%;">
+            <input class="resource_input" name="system.resources.supplies.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.supplies.max}}" data-dtype="Number"/>
+        </td>
+        <td>
+            <label>{{localize "TINY.resources.cargo"}}</label>
+        </td>
+        <td style="width:10%;">
+            <input class="resource_input" name="system.resources.cargo.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.cargo.max}}" data-dtype="Number"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="resources competence">
+                {{#times actor.system.resources.supplies.max}}
+                  <a class="resource-change" data-resource="supplies" data-number={{.}}>
+                  {{#if (gte . ../actor.system.resources.supplies.value)}}
+                    <i class="far fa-square"></i>
+                  {{else}}
+                    <i class="fas fa-check-square"></i>
+                  {{/if}}
+                  </a>
+                {{/times}}
+            </div>
+        </td>
+        <td></td>
+        <td>
+            <div class="resources competence">
+                {{#times actor.system.resources.cargo.max}}
+                  <a class="resource-change" data-resource="cargo" data-number={{.}}>
+                  {{#if (gte . ../actor.system.resources.cargo.value)}}
+                    <i class="far fa-square"></i>
+                  {{else}}
+                    <i class="fas fa-check-square"></i>
+                  {{/if}}
+                  </a>
+                {{/times}}
+            </div>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>
+            <label>{{localize "TINY.resources.gold"}}</label>
+        </td>
+        <td style="width:10%;">
+            <input class="resource_input" name="system.resources.gold.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.gold.max}}" data-dtype="Number"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="resources competence">
+                {{#times actor.system.resources.gold.max}}
+                  <a class="resource-change" data-resource="gold" data-number={{.}}>
+                  {{#if (gte . ../actor.system.resources.gold.value)}}
+                    <i class="far fa-square"></i>
+                  {{else}}
+                    <i class="fas fa-check-square"></i>
+                  {{/if}}
+                  </a>
+                {{/times}}
+            </div>
+        </td>
+    </tr>
+</table>
+<div clas="half_editor">
+  <textarea name="system.notes2" value="{{actor.system.notes2}}" rows="10" cols="50">
+    {{actor.system.notes2}}
+  </textarea>
+</div>

@@ -3,7 +3,10 @@
         "types":
         [
             "Player",
-            "NPC"
+            "NPC",
+            "Vehicle",
+            "Spaceship",
+            "Ship"
         ],
         "Player": {
             "archetype":"",
@@ -112,6 +115,179 @@
             "weapondominated":"",
             "initiative": "2d6",
             "notes": ""
+        },
+        "Vehicle": {
+            "chasis":"",
+            "resources":{
+                "hitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 6
+                },
+                "armorhitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "extrahitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "totalhitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "improvements": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 5
+                },
+                "capacity": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                }
+            },
+            "initiative": "2d6",
+            "notes": ""
+        },
+        "Spaceship": {
+            "chasis":"",
+            "resources":{
+                "hitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 6
+                },
+                "armorhitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "extrahitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "totalhitpoints": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 0
+                },
+                "energy": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 5
+                },
+                "capacity": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                }
+            },
+            "initiative": "2d6",
+            "notes": ""
+        },
+        "Ship": {
+            "chasis":"",
+            "resources":{
+                "hull": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 6
+                },
+                "sails": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 5
+                },
+                "crew": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                },
+                "artillery": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                },
+                "load": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                },
+                "gold": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                },
+                "supplies": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                },
+                "cargo": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 4
+                },
+                "sinking": {
+                    "value": 0,
+                    "min": 0,
+                    "max": 2
+                }
+            },
+            "crew": {
+                "captain": {
+                    "occupied": false,
+                    "name": ""
+                },
+                "quartermaster": {
+                    "occupied": false,
+                    "name": ""
+                },
+                "pilot": {
+                    "occupied": false,
+                    "name": ""
+                },
+                "boatswain": {
+                    "occupied": false,
+                    "name": ""
+                },
+                "gunner": {
+                    "occupied": false,
+                    "name": ""
+                },
+                "doctor": {
+                    "occupied": false,
+                    "name": ""
+                },
+                "crew1": {
+                    "occupied": false,
+                    "name": "",
+                    "position": ""
+                },
+                "crew2": {
+                    "occupied": false,
+                    "name": "",
+                    "position": ""
+                },
+                "crew3": {
+                    "occupied": false,
+                    "name": "",
+                    "position": ""
+                },
+                "crew4": {
+                    "occupied": false,
+                    "name": "",
+                    "position": ""
+                }
+            },
+            "initiative": "2d6",
+            "notes": "",
+            "notes2": ""
         }
     },
     "Item": {
@@ -124,7 +300,7 @@
         ],
         "trait": {
             "archetype": false,
-            "modifies_init": 0,
+            "modifies_init": "normal",
             "modifies_damage": 0,
             "modifies_stress": 0,
             "description": ""

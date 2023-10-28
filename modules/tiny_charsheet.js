@@ -20,7 +20,6 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const data = super.getData();
       if (this.actor.type == 'Player') {
         this._prepareCharacterItems(data);
-        //this._updateInitiative(data);
       }
       return data;
     }
@@ -36,10 +35,23 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       const EquippedArmors =[];
       let armorhitpoints=0;
       let totalSlots=0;
+      let initiative="2d6";
       for (let i of sheetData.items){
         switch (i.type){
 				  case 'trait':
 				  {
+            switch (i.system.modifies_init){
+              case 'ventaja':
+              {
+                initiative="3d6"
+                break;
+              }
+              case 'desventaja':
+              {
+                initiative="1d6"
+                break;
+              }
+            }
             if (i.system.archetype == true){
               Archetype_Traits.push(i);
 					    break;
@@ -136,6 +148,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(armorhitpoints)+Number(this.actor.system.resources.extrahitpoints.max)
       this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
       this.actor.update ({'system.resources.totalhitpoints.max': totalhitpoints})
+      this.actor.update ({'system.initiative': initiative})
       actorData.isGM = game.user.isGM;
       actorData.settings = {
         xpMode: game.settings.get("tinyd6", "xpMode"),
@@ -149,18 +162,6 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       }
       this.actor.update ({'system.resources.slots.value': totalSlots})
     }
-
-    //_updateInitiative(sheetData){
-    //  let initiative=""
-    //  if (sheetData.actor.system.trait=="Agile" || sheetData.actor.system.subtrait.reflexes){
-    //    initiative="3d6cs>=5"
-    //  }
-    //  else{
-    //    initiative="2d6cs>=5"
-    //  }
-    //  this.actor.update ({ 'system.initiative': initiative });
-    //}
-
 
     activateListeners(html)
 	  {

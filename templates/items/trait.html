@@ -15,7 +15,16 @@
         <table>
             <tr>
                 <td><label>{{localize "TINY.ui.archetype"}}</label><input type="checkbox" {{checked item.system.archetype}} name="system.archetype"></td>
-                <td></td>
+                <td>
+                    <label>{{localize "TINY.ui.initiative"}}</label>
+                    <select name="system.modifies_init" data-dtype="String">
+                        {{#select item.system.modifies_init}}
+                          <option value="normal">{{localize "TINY.ui.regularRoll"}}</option>
+                          <option value="ventaja">{{localize "TINY.ui.advantageRoll"}}</option>
+                          <option value="desventaja">{{localize "TINY.ui.disadvantageRoll"}}</option>
+                        {{/select}}
+                    </select>
+                </td>
             </tr>
         </table>
     </div>

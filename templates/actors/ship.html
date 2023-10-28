@@ -1,0 +1,153 @@
+<form class="{{cssClass}} tinyd6" autocomplete="off">
+  <div class="charsheet">
+    <section class="left-section">
+      <div class="char-name"><h2><input name="name" type="text" value="{{actor.name}}" placeholder='SHIP' onClick="this.select();"/></h2></div>
+        <div class="npc-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
+      <a class="dice-roll">
+        <div>
+          <h1><label>&nbsp;&nbsp;{{localize "TINY.ui.roll"}}&nbsp;&nbsp;</label></h1>
+        </div>
+      </a>
+        <table class="resource competence">
+          <tr>
+            <td>
+              <label>{{localize "TINY.resources.hull"}}</label>
+            </td>
+            <td style="width:20%;">
+              <input class="resource_input" name="system.resources.hull.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.hull.max}}" data-dtype="Number"/>
+            </td>
+          </tr>
+        </table>
+      <div class="resources competence">
+          {{#times actor.system.resources.hull.max}}
+              <a class="resource-change" data-resource="hull" data-number={{.}}>
+                {{#if (gte . ../actor.system.resources.hull.value)}}
+                  <i class="far fa-square"></i>
+                {{else}}
+                  <i class="fas fa-check-square"></i>
+                {{/if}}
+              </a>
+          {{/times}}
+          
+      </div>
+
+      <table class="resource competence">
+        <tr>
+          <td>
+            <label>{{localize "TINY.resources.sails"}}</label>
+          </td>
+          <td style="width:20%;">
+            <input class="resource_input" name="system.resources.sails.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.sails.max}}" data-dtype="Number"/>
+          </td>
+        </tr>
+      </table>
+      <div class="resources competence">
+        {{#times actor.system.resources.sails.max}}
+          <a class="resource-change" data-resource="sails" data-number={{.}}>
+          {{#if (gte . ../actor.system.resources.sails.value)}}
+            <i class="far fa-square"></i>
+          {{else}}
+            <i class="fas fa-check-square"></i>
+          {{/if}}
+          </a>
+        {{/times}}
+      </div>
+
+      <table class="resource competence">
+        <tr>
+          <td>
+            <label>{{localize "TINY.resources.crew"}}</label>
+          </td>
+          <td style="width:20%;">
+            <input class="resource_input" name="system.resources.crew.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.crew.max}}" data-dtype="Number"/>
+          </td>
+        </tr>
+      </table>
+      <div class="resources competence">
+        {{#times actor.system.resources.crew.max}}
+          <a class="resource-change" data-resource="crew" data-number={{.}}>
+          {{#if (gte . ../actor.system.resources.crew.value)}}
+            <i class="far fa-square"></i>
+          {{else}}
+            <i class="fas fa-check-square"></i>
+          {{/if}}
+          </a>
+        {{/times}}
+      </div>
+
+      <table class="resource competence">
+        <tr>
+          <td>
+            <label>{{localize "TINY.resources.artillery"}}</label>
+          </td>
+          <td style="width:20%;">
+            <input class="resource_input" name="system.resources.artillery.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.artillery.max}}" data-dtype="Number"/>
+          </td>
+        </tr>
+      </table>
+      <div class="resources competence">
+        {{#times actor.system.resources.artillery.max}}
+          <a class="resource-change" data-resource="artillery" data-number={{.}}>
+          {{#if (gte . ../actor.system.resources.artillery.value)}}
+            <i class="far fa-square"></i>
+          {{else}}
+            <i class="fas fa-check-square"></i>
+          {{/if}}
+          </a>
+        {{/times}}
+      </div>
+
+      <table class="resource competence">
+        <tr>
+          <td>
+            <label>{{localize "TINY.resources.sinking"}}</label>
+          </td>
+          <td style="width:20%;">
+            <input class="resource_input" name="system.resources.sinking.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.sinking.max}}" data-dtype="Number"/>
+          </td>
+        </tr>
+      </table>
+      <div class="resources competence">
+        {{#times actor.system.resources.sinking.max}}
+          <a class="resource-change" data-resource="sinking" data-number={{.}}>
+          {{#if (gte . ../actor.system.resources.sinking.value)}}
+            <i class="far fa-square"></i>
+          {{else}}
+            <i class="fas fa-check-square"></i>
+          {{/if}}
+          </a>
+        {{/times}}
+      </div>
+      
+    </section>
+    
+    <section class="right-section">
+      <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="general">{{localize "TINY.ui.tab.general"}}</a>
+        <a class="item" data-tab="crew">{{localize "TINY.ui.tab.crew"}}</a>
+        <a class="item" data-tab="cargo">{{localize "TINY.ui.tab.cargo"}}</a>
+        <a class="item" data-tab="bio">{{localize "TINY.ui.tab.notes"}}</a>
+        
+      </nav>
+      {{!-- Item Sheet Body --}}
+      <section class="sheet-body">
+        {{!-- General Tab --}}
+        <div class="tab general" data-group="primary" data-tab="general">
+          {{> "/systems/tinyd6/templates/actors/parts/general_Ship.html"}}
+        </div>
+        {{!-- Crew Tab --}}
+        <div class="tab crew" data-group="primary" data-tab="crew">
+          {{> "/systems/tinyd6/templates/actors/parts/Crew_Ship.html"}}
+        </div>
+        {{!-- Cargo Tab --}}
+        <div class="tab cargo" data-group="primary" data-tab="cargo">
+          {{> "/systems/tinyd6/templates/actors/parts/Cargo_Ship.html"}}
+        </div>
+        {{!-- Notes Tab --}}
+        <div class="tab bio" data-group="primary" data-tab="bio">
+          {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
+        </div>
+      </section>
+    </section>
+  </div>
+</form>

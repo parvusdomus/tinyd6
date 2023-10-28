@@ -1,5 +1,8 @@
 import TINY_CHAR_SHEET from "./modules/tiny_charsheet.js";
 import TINY_NPC_SHEET from "./modules/tiny_npc.js";
+import TINY_SHIP_SHEET from "./modules/tiny_ship.js";
+import TINY_SPACESHIP_SHEET from "./modules/tiny_spaceship.js";
+import TINY_VEHICLE_SHEET from "./modules/tiny_vehicle.js";
 import TINY_ITEM_SHEET from "./modules/tiny_itemsheet.js";
 import { preloadHandlebarsTemplates } from "./modules/preloadTemplates.js";
 import {_getInitiativeFormula} from './modules/combat.js';
@@ -19,6 +22,18 @@ Hooks.once("init", function(){
   Actors.registerSheet("tinyd6", TINY_NPC_SHEET, {
     makeDefault: true,
     types: ['NPC']
+  });
+  Actors.registerSheet("tinyd6", TINY_SHIP_SHEET, {
+    makeDefault: true,
+    types: ['Ship']
+  });
+  Actors.registerSheet("tinyd6", TINY_SPACESHIP_SHEET, {
+    makeDefault: true,
+    types: ['Spaceship']
+  });
+  Actors.registerSheet("tinyd6", TINY_VEHICLE_SHEET, {
+    makeDefault: true,
+    types: ['Vehicle']
   });
   console.log("test | INITIALIZING TINY ITEM SHEETS...");
   Items.unregisterSheet("core", ItemSheet);

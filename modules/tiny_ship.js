@@ -1,19 +1,19 @@
 import {DiceRoll} from "../modules/rolls.js";
 
-export default class TINY_NPC_SHEET extends ActorSheet{
+export default class TINY_SHIP_SHEET extends ActorSheet{
     static get defaultOptions() {
       return mergeObject(super.defaultOptions, {
           classes: ["tinyd6", "sheet", "actor"],
-          template: "systems/tinyd6/templates/actors/npc.html",
+          template: "systems/tinyd6/templates/actors/ship.html",
           width: 600,
-          height: 505,
+          height: 540,
           tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "general" }]
         });
   
     }
     getData() {
       const data = super.getData();
-      if (this.actor.type == 'NPC') {
+      if (this.actor.type == 'Ship') {
         this._prepareCharacterItems(data);
         //this._updateInitiative(data);
       }
@@ -23,9 +23,6 @@ export default class TINY_NPC_SHEET extends ActorSheet{
     _prepareCharacterItems(sheetData){
       const actorData = sheetData;
       const Traits = [];
-      const Weapons = [];
-      const Armors = [];
-      let armorhitpoints=0;
       let initiative="2d6"
       for (let i of sheetData.items){
         switch (i.type){
@@ -46,79 +43,10 @@ export default class TINY_NPC_SHEET extends ActorSheet{
             Traits.push(i);
             break;
 				  }
-          case 'weapon':
-				  {
-            const item = this.actor.items.get(i._id);
-            if (actorData.actor.system.competences[i.system.weapontype]==true){
-              item.update ({'system.competent': true})
-            }
-            else{
-              item.update ({'system.competent': false})
-            }
-            switch (item.system.weapontype){
-              case 'lightmelee':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.light_melee")});
-                break;
-              }
-              case 'heavymelee':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.heavy_melee")});
-                break;
-              }
-              case 'lightranged':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.light_ranged")});
-                break;
-              }
-              case 'heavyranged':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.heavy_ranged")});
-                break;
-              }
-            }
-            Weapons.push(i);
-					  break;			  
-				  }
-          case 'armor':
-          {
-            const item = this.actor.items.get(i._id);
-            switch (item.system.armortype){
-              case 'light':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.light")});
-                break;
-              }
-              case 'medium':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.medium")});
-                break;
-              }
-              case 'heavy':
-              {
-                item.update ({'system.competentlabel': game.i18n.localize("TINY.competence.heavy")});
-                break;
-              }
-            }
-            if (Armors.length <= 0){
-              Armors.push(i);
-              armorhitpoints=item.system.extralife;
-            } 
-            else{
-              ui.notifications.warn(game.i18n.localize("TINY.ui.cantAddMore"));
-              this.actor.deleteEmbeddedDocuments("Item", [item._id])
-            }
-            break;			  
-          }
           
         }
       }
       actorData.Traits = Traits;
-      actorData.Weapons = Weapons;
-      actorData.Armors = Armors;
-      let totalhitpoints = Number(this.actor.system.resources.hitpoints.max)+Number(armorhitpoints)+Number(this.actor.system.resources.extrahitpoints.max)
-      this.actor.update ({'system.resources.armorhitpoints.max': armorhitpoints})
-      this.actor.update ({'system.resources.totalhitpoints.max': totalhitpoints})
       this.actor.update ({'system.initiative': initiative})
       actorData.settings = {
         
@@ -132,7 +60,6 @@ export default class TINY_NPC_SHEET extends ActorSheet{
 		  super.activateListeners(html);
       html.find('a.dice-roll').click(this._onDiceRoll.bind(this));
       html.find('a.resource-change').click(this._onResourceChange.bind(this));
-      html.find('a.competence-toggle').click(this._onCompetenceToggle.bind(this));
       html.find('a.item-edit').click(this._onEditClick.bind(this));
       html.find('a.item-show').click(this._onShowClick.bind(this));
 		  html.find('a.item-delete').click(this._onDeleteClick.bind(this));
@@ -264,61 +191,44 @@ export default class TINY_NPC_SHEET extends ActorSheet{
         value=Number(dataset.number)+1
       }
       switch (dataset.resource){
-        case 'totalhitpoints':
+        case 'hull':
         {
-          this.actor.update ({'system.resources.totalhitpoints.value': value});
+          this.actor.update ({'system.resources.hull.value': value});
           break;
         }
-      }
-      return;
-    }
-
-    async _onCompetenceToggle (event, data){
-      event.preventDefault();
-      const dataset = event.currentTarget.dataset;
-      switch (dataset.competence){
-        case 'lightmelee':
+        case 'sails':
         {
-          if (this.actor.system.competences.lightmelee==true){
-            await this.actor.update ({'system.competences.lightmelee': false});
-          }
-          else{
-            await this.actor.update ({'system.competences.lightmelee': true});
-          }
-          
+          this.actor.update ({'system.resources.sails.value': value});
           break;
         }
-        case 'heavymelee':
+        case 'crew':
         {
-          if (this.actor.system.competences.heavymelee==true){
-            await this.actor.update ({'system.competences.heavymelee': false});
-          }
-          else{
-            await this.actor.update ({'system.competences.heavymelee': true});
-          }
-          
+          this.actor.update ({'system.resources.crew.value': value});
           break;
         }
-        case 'lightranged':
+        case 'artillery':
         {
-          if (this.actor.system.competences.lightranged==true){
-            await this.actor.update ({'system.competences.lightranged': false});
-          }
-          else{
-            await this.actor.update ({'system.competences.lightranged': true});
-          }
-          console.log (this.actor.system.competences.lightranged)
+          this.actor.update ({'system.resources.artillery.value': value});
           break;
         }
-        case 'heavyranged':
+        case 'sinking':
         {
-          if (this.actor.system.competences.heavyranged==true){
-            await this.actor.update ({'system.competences.heavyranged': false});
-          }
-          else{
-            await this.actor.update ({'system.competences.heavyranged': true});
-          }
-          
+          this.actor.update ({'system.resources.sinking.value': value});
+          break;
+        }
+        case 'supplies':
+        {
+          this.actor.update ({'system.resources.supplies.value': value});
+          break;
+        }
+        case 'cargo':
+        {
+          this.actor.update ({'system.resources.cargo.value': value});
+          break;
+        }
+        case 'gold':
+        {
+          this.actor.update ({'system.resources.gold.value': value});
           break;
         }
       }

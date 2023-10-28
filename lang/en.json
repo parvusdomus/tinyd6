@@ -1,6 +1,9 @@
 {
     "TYPES.Actor.Player": "Player",
     "TYPES.Actor.NPC": "NPC",
+    "TYPES.Actor.Vehicle": "Vehicle",
+    "TYPES.Actor.Spaceship": "Spaceship",
+    "TYPES.Actor.Ship": "Ship",
     "TYPES.Item.trait": "Trait",
     "TYPES.Item.weapon": "Weapon",
     "TYPES.Item.item": "Item",
@@ -11,6 +14,17 @@
     "TINY.resources.grit": "Grit",
     "TINY.resources.panic": "Panic",
     "TINY.resources.corruption": "Corruption",
+    "TINY.resources.improvements": "Improvements",
+    "TINY.resources.energy": "Energy",
+    "TINY.resources.structure": "Structure",
+    "TINY.resources.hull": "Hull",
+    "TINY.resources.sails": "Sails",
+    "TINY.resources.crew": "Crew",
+    "TINY.resources.artillery": "Artillery",
+    "TINY.resources.sinking": "Sinking",
+    "TINY.resources.cargo": "Cargo",
+    "TINY.resources.supplies": "Supplies",
+    "TINY.resources.gold": "Gold",
     "TINY.competence.weapon": "Weapon Competence",
     "TINY.dominate.weapon": "Dominated Weapon",
     "TINY.ui.dominate": "Dominated",
@@ -34,8 +48,10 @@
     "TINY.ui.weapons": "Weapons",
     "TINY.ui.armor": "Armor",
     "TINY.ui.items": "Items",
+    "TINY.ui.system": "Systems",
     "TINY.ui.equippedweapons": "Equiped Weapons",
     "TINY.ui.archetype": "Archetype",
+    "TINY.ui.chasis": "Chasis",
     "TINY.ui.bussiness": "Family Bussines",
     "TINY.ui.belief": "Belief",
     "TINY.ui.origin": "Power Origin",
@@ -47,6 +63,8 @@
     "TINY.ui.tab.general": "General",
     "TINY.ui.tab.inventory": "Inventory",
     "TINY.ui.tab.notes": "Notes",
+    "TINY.ui.tab.crew": "Crew",
+    "TINY.ui.tab.cargo": "Cargo",
     "TINY.ui.roll": "Roll!",
     "TINY.ui.deleteTitle": "Delete item?",
     "TINY.ui.deleteText": "Please confirm if you want to delete this item.",
@@ -61,6 +79,7 @@
     "TINY.ui.advantageRoll": "Advantage",
     "TINY.ui.regularRoll": "Regular",
     "TINY.ui.disadvantageRoll": "Disadvantage",
+    "TINY.ui.initiative": "Initiative",
     "TINY.ui.focus": "Focus",
     "TINY.ui.defense": "Defense",
     "TINY.ui.marksman": "Marksman",
@@ -71,7 +90,7 @@
     "TINY.ui.experiencepointsTotal": "Total",
     "TINY.ui.slots": "Slots",
     "TINY.ui.maxslots": "Max Slots",
-    "TINY.ui.overload": "- Overloaded!! -",
+    "TINY.ui.overload": "- Overloaded!!",
 
     "TINY.config.enableCriticalName": "Enable Criticals",
     "TINY.config.enableCriticalHint": "Activate to enable Critical Successes and Failures",
@@ -129,6 +148,17 @@
     "TINY.config.xpMinimal":"Minimalistic",
     "TINY.config.xpXP": "Experience Points",
     "TINY.config.xpModeName": "Advance Mode",
-    "TINY.config.xpModeHint": "Choose the Advance Mode to use."
+    "TINY.config.xpModeHint": "Choose the Advance Mode to use.",
+
+    "TINY.crew.captain": "Captain",
+    "TINY.crew.quartermaster": "Quartermaster",
+    "TINY.crew.pilot": "Helmsman",
+    "TINY.crew.boatswain": "Boatswain",
+    "TINY.crew.gunner": "Gunner",
+    "TINY.crew.doctor": "Doctor",
+
+    "TINY.ui.crewmember_name": "Crewmember Name",
+    "TINY.ui.position_name": "Position Name"
+
 
 }

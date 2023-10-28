@@ -1,0 +1,77 @@
+<form class="{{cssClass}} tinyd6" autocomplete="off">
+  <div class="charsheet">
+    <section class="left-section">
+      <div class="char-name"><h2><input name="name" type="text" value="{{actor.name}}" placeholder='Nombre' onClick="this.select();"/></h2></div>
+        <div class="npc-pic"><img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{name}}" alt='Imagen del Personaje'/></div>
+      <a class="dice-roll">
+        <div>
+          <h1><label>&nbsp;&nbsp;{{localize "TINY.ui.roll"}}&nbsp;&nbsp;</label></h1>
+        </div>
+      </a>
+      <table class="resource competence">
+        <tr>
+          <td>
+            <label>{{localize "TINY.resources.structure"}}</label>
+          </td>
+          <td style="width:20%;">
+            <input class="resource_input" name="system.resources.hitpoints.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.hitpoints.max}}" data-dtype="Number"/>
+          </td>
+        </tr>
+      </table>
+      <div class="resources competence">
+        {{#times actor.system.resources.totalhitpoints.max}}
+          <a class="resource-change" data-resource="totalhitpoints" data-number={{.}}>
+            {{#if (gte . ../actor.system.resources.totalhitpoints.value)}}
+              <i class="far fa-square"></i>
+            {{else}}
+              <i class="fas fa-check-square"></i>
+            {{/if}}
+          </a>
+        {{/times}}
+          
+      </div>
+      <table class="resource competence">
+        <tr>
+          <td>
+            <label>{{localize "TINY.resources.energy"}}</label>
+          </td>
+          <td style="width:20%;">
+            <input class="resource_input" name="system.resources.energy.max" type="number" maxlength="2" size="2" value="{{actor.system.resources.energy.max}}" data-dtype="Number"/>
+          </td>
+        </tr>
+      </table>
+      <div class="resources competence">
+        {{#times actor.system.resources.energy.max}}
+          <a class="resource-change" data-resource="energy" data-number={{.}}>
+            {{#if (gte . ../actor.system.resources.energy.value)}}
+              <i class="far fa-square"></i>
+            {{else}}
+              <i class="fas fa-check-square"></i>
+            {{/if}}
+          </a>
+        {{/times}}
+          
+      </div>
+      
+    </section>
+    
+    <section class="right-section">
+      <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="general">{{localize "TINY.ui.tab.general"}}</a>
+        <a class="item" data-tab="bio">{{localize "TINY.ui.tab.notes"}}</a>
+        
+      </nav>
+      {{!-- Item Sheet Body --}}
+      <section class="sheet-body">
+        {{!-- General Tab --}}
+        <div class="tab general" data-group="primary" data-tab="general">
+          {{> "/systems/tinyd6/templates/actors/parts/general_Spaceship.html"}}
+        </div>
+        {{!-- Notes Tab --}}
+        <div class="tab bio" data-group="primary" data-tab="bio">
+          {{editor actor.system.notes target="system.notes" button=true owner=owner editable=true}}
+        </div>
+      </section>
+    </section>
+  </div>
+</form>
