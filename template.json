@@ -84,6 +84,7 @@
             "defense": false,
             "origin": "",
             "weakness": "",
+            "corruption": "normal",
             "resources":{
                 "hitpoints": {
                     "value": 0,

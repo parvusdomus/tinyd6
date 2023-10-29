@@ -1,3 +1,11 @@
+{{#if settings.enablePowerOrigin}}
+    <ul class="archetypeNPC">
+        <li><input name="system.origin" type="text" value="{{actor.system.origin}}" placeholder='{{localize "TINY.ui.origin"}}' data-dtype="String"/></li>
+    </ul>
+    <ul class="archetypeNPC">
+        <li><input name="system.weakness" type="text" value="{{actor.system.weakness}}" placeholder='{{localize "TINY.ui.weakness"}}' data-dtype="String"/></li>
+    </ul>
+{{/if}}
 <table class="item-list">
     <tr>
         <th></th>

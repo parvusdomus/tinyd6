@@ -121,7 +121,8 @@ export default class TINY_NPC_SHEET extends ActorSheet{
       this.actor.update ({'system.resources.totalhitpoints.max': totalhitpoints})
       this.actor.update ({'system.initiative': initiative})
       actorData.settings = {
-        
+        enableCorruption: game.settings.get("tinyd6", "enableCorruption"),
+        enablePowerOrigin: game.settings.get("tinyd6", "enablePowerOrigin"),
       }
       actorData.isGM = game.user.isGM;
 

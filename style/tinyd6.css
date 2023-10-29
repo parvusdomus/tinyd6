@@ -350,6 +350,38 @@
     color: var(--input-text-color);
 }
 
+.archetypeNPC {
+    list-style: none;
+    margin: -0.5em 0px;
+    padding: 0px 0px 0px 0.5em;
+}
+
+.archetypeNPC input {
+    width: 210%;
+    text-align: center;
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+}
+
+.archetypeNPC h1 {
+    color: var(--header-font-color);
+    font-family: var(--font-name);
+    border-bottom: none;
+}
+
+.archetypeNPC li {
+    display: inline-block;
+    padding: 5px 1px;
+    vertical-align: middle;
+}
+
+.archetypeNPC img {
+    width: 30px;
+    height: 30px;
+    border: none;
+    margin: auto;
+}
+
 .npctag {
     list-style: none;
     margin: -0.5em 0px;

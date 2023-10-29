@@ -85,9 +85,23 @@
                 {{/if}}
               </a>
           {{/times}}
-          
       </div>
-      
+      {{#if settings.enableCorruption}}
+        <table>
+          <tr>
+            <td>
+              <label>{{localize "TINY.resources.corruption"}}</label>
+              <select name="system.corruption" data-dtype="String">
+                {{#select actor.system.corruption}}
+                  <option value="normal">{{localize "TINY.ui.regularRoll"}}</option>
+                  <option value="ventaja">{{localize "TINY.ui.advantageRoll"}}</option>
+                  <option value="desventaja">{{localize "TINY.ui.disadvantageRoll"}}</option>
+                {{/select}}
+              </select>
+            </td>
+          </tr>
+        </table>
+      {{/if}}
     </section>
     
     <section class="right-section">
