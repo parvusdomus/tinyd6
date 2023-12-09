@@ -44,10 +44,9 @@
     "initiative": "@initiative",
     "gridDistance": 2,
     "gridUnits": "m",
-    "primaryTokenAttribute": "resources.resolve",
-    "secondaryTokenAttribute": "resources.karma",
+    "primaryTokenAttribute": "resources.totalhitpoints",
     "url": "https://github.com/parvusdomus/tinyd6",
-    "manifest": "https://github.com/parvusdomus/tiny/releases/latest/download/system.json",
-    "download": "https://github.com/parvusdomus/tiny/releases/latest/download/tiny.zip",
+    "manifest": "https://github.com/parvusdomus/tinyd6/releases/latest/download/system.json",
+    "download": "https://github.com/parvusdomus/tinyd6/releases/latest/download/tinyd6.zip",
     "license": "LICENSE.txt"
   }
