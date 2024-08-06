@@ -5,7 +5,7 @@ export default class TINY_CHAR_SHEET extends ActorSheet{
       //if (game.settings.get("tinyd6", "enableSubTraits")==true || game.settings.get("tinyd6", "enableSubStyles")==true){
       //  adjusted_height+=130;
       //}
-      return mergeObject(super.defaultOptions, {
+      return foundry.utils.mergeObject(super.defaultOptions, {
           classes: ["tinyd6", "sheet", "actor"],
           template: "systems/tinyd6/templates/actors/character.html",
           width: 700,

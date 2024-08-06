@@ -2,7 +2,7 @@ import {DiceRoll} from "../modules/rolls.js";
 
 export default class TINY_NPC_SHEET extends ActorSheet{
     static get defaultOptions() {
-      return mergeObject(super.defaultOptions, {
+      return foundry.utils.mergeObject(super.defaultOptions, {
           classes: ["tinyd6", "sheet", "actor"],
           template: "systems/tinyd6/templates/actors/npc.html",
           width: 600,
