@@ -388,7 +388,7 @@ Hooks.once("init", function(){
   let inputBgColor=game.settings.get ("tinyd6", "inputBgColor")
   root.style.setProperty('--input-bg-color',inputBgColor)
   let inputFontColor=game.settings.get ("tinyd6", "inputFontColor")
-  root.style.setProperty('--input-text-color',inputFontColor)
+  root.style.setProperty('--input-text-color-td6',inputFontColor)
   let titleFont=game.settings.get ("tinyd6", "titleFont")
   root.style.setProperty('--font-name',titleFont) 
   let windowHeaderBgColor=game.settings.get ("tinyd6", "windowHeaderBgColor")
