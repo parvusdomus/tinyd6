@@ -2,7 +2,7 @@
     "id": "tinyd6",
     "title": "TinyD6",
     "description": "Alternative Game System for TinyD6. (Based on Tricube Tales System)",
-    "version": "1.6.0",
+    "version": "2.0.0",
     "authors": [
       {
         "name": "ParvusDomus",
@@ -10,8 +10,8 @@
       }
     ],
     "compatibility": {
-      "minimum": "11",
-      "verified": "11"
+      "minimum": "12",
+      "verified": "12"
     },
     "esmodules": [
       "tinyd6.js"
