@@ -40,11 +40,11 @@ export async function DiceRoll(rollType, focus, defense, marksman)
     let actor = game.actors.get(ChatMessage.getSpeaker().actor);
     tirada=nDice+"d6"
     rollText="<label>"+tirada+" VS "+difficulty+"</label>"
-    let d6Roll = await new Roll(String(tirada)).roll({async: false});
+    let d6Roll = await new Roll(String(tirada)).roll();
     let critEnabled = game.settings.get('tinyd6', 'enableCritical');
     console.log ("CRIT ENABLED")
     console.log (critEnabled)
-    let additional = await new Roll("1d6", {}).evaluate({'async': true});
+    let additional = await new Roll("1d6", {}).evaluate();
     console.log ("ADDITIONAL")
     console.log (additional._total)
     for (let i = 0; i < nDice; i++) {
