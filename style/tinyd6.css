@@ -245,7 +245,7 @@
 .char-name input{
     font-family: var(--font-name);
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .resources {
@@ -347,7 +347,7 @@
     width: 250%;
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .archetypeNPC {
@@ -360,7 +360,7 @@
     width: 210%;
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .archetypeNPC h1 {
@@ -403,7 +403,7 @@
     width: 200%;
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .item-list {
@@ -450,7 +450,7 @@
 .item-name input{
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .item-name h2{
@@ -495,13 +495,13 @@
 .competence input {
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .competence select {
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .stance table{
@@ -572,7 +572,7 @@
     --list-header-color: #000000;
     --input-bg-color: #999999;
     --list-text-color: #000000;
-    --input-text-color: #000000;
+    --input-text-color-td6: #000000;
     --window-header-bg-color: #000000;
     --window-header-font-color: #ffffff;
     --die-roller-button-bg-color: #ffffff;
@@ -699,7 +699,7 @@
 .resource input {
     text-align: center;
     background-color: var(--input-bg-color);
-    color: var(--input-text-color);
+    color: var(--input-text-color-td6);
 }
 
 .cargo table, td, tr{
