@@ -42,8 +42,10 @@
       }
     ],
     "initiative": "@initiative",
-    "gridDistance": 2,
-    "gridUnits": "m",
+    "grid": {
+      "distance": 2,
+      "units": "m"
+    },
     "primaryTokenAttribute": "resources.totalhitpoints",
     "url": "https://github.com/parvusdomus/tinyd6",
     "manifest": "https://github.com/parvusdomus/tinyd6/releases/latest/download/system.json",
