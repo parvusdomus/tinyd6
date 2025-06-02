@@ -1,5 +1,5 @@
 export default class tinyChat {
-    static chatListeners (html) {
+    static chatListeners (message, html) {
       html.on('click', '.spendKarma', this._spendKarma.bind(this));
       html.on('click', '.gainResolve', this._gainResolve.bind(this));
       html.on('click', '.gainKarma', this._gainKarma.bind(this));

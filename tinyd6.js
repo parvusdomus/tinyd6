@@ -12,7 +12,7 @@ import tinyChat from "./modules/chat.js";
 
 
 Hooks.once("init", function(){
-  document.getElementById("logo").src = "/systems/tinyd6/style/images/tinyd6.webp";
+  //document.getElementById("logo").src = "/systems/tinyd6/style/images/tinyd6.webp";
   console.log("test | INITIALIZING TINY CHARACTER SHEETS...");
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("tinyd6", TINY_CHAR_SHEET, {
@@ -237,8 +237,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#ffffff',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#ffffffff',
   });
 
   game.settings.register('tinyd6', 'buttonHeaderFontColor', {
@@ -247,8 +247,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#000000',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#000000ff',
   }); 
 
   game.settings.register('tinyd6', 'listHeaderBgColor', {
@@ -257,8 +257,8 @@ Hooks.once("init", function(){
       scope: 'world',
       requiresReload: true,
       config: true,
-      type: String,
-      default: '#000000',
+      type: new game.colorPicker.ColorPickerField(),
+      default: '#000000ff',
   });
 
   game.settings.register('tinyd6', 'listHeaderFontColor', {
@@ -267,8 +267,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#ffffff',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#ffffffff',
   }); 
 
   game.settings.register('tinyd6', 'headerFontColor', {
@@ -277,8 +277,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#000000',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#000000ff',
   });
 
   game.settings.register('tinyd6', 'regularFontColor', {
@@ -287,8 +287,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#000000',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#000000ff',
   });
 
   game.settings.register('tinyd6', 'inputBgColor', {
@@ -297,8 +297,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#ffffdc',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#ffffdff',
   });
 
   game.settings.register('tinyd6', 'inputFontColor', {
@@ -307,8 +307,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#000000',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#000000ff',
   });
 
   game.settings.register('tinyd6', 'windowHeaderBgColor', {
@@ -317,8 +317,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#000000',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#000000ff',
   });
 
   game.settings.register('tinyd6', 'windowHeaderFontColor', {
@@ -327,8 +327,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#ffffff',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#ffffffff',
   });
 
   game.settings.register('tinyd6', 'tabActiveBgColor', {
@@ -337,8 +337,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#000000',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#000000ff',
   });
 
   game.settings.register('tinyd6', 'tabActiveFontColor', {
@@ -347,8 +347,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#ffffff',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#ffffffff',
   });
 
   game.settings.register('tinyd6', 'tabHoverBgColor', {
@@ -357,8 +357,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#555353',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#555353ff',
   });
 
   game.settings.register('tinyd6', 'tabHoverFontColor', {
@@ -367,8 +367,8 @@ Hooks.once("init", function(){
     scope: 'world',
     requiresReload: true,
     config: true,
-    type: String,
-    default: '#d8d1d1',
+    type: new game.colorPicker.ColorPickerField(),
+    default: '#d8d1d1ff',
   });
   
 
@@ -437,7 +437,7 @@ Hooks.on("renderPause", () => {
 });
 
 
-Hooks.on('renderSettingsConfig', (app, el, data) => {
+/*Hooks.on('renderSettingsConfig', (app, el, data) => {
   // Insert color picker input
   el.find('[name="tinyd6.listHeaderBgColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','listHeaderBgColor')}" data-edit="tinyd6.listHeaderBgColor">`)
@@ -467,9 +467,11 @@ Hooks.on('renderSettingsConfig', (app, el, data) => {
     .append(`<input type="color" value="${game.settings.get('tinyd6','buttonHeaderBgColor')}" data-edit="tinyd6.buttonHeaderBgColor">`)
   el.find('[name="tinyd6.buttonHeaderFontColor"]').parent()
     .append(`<input type="color" value="${game.settings.get('tinyd6','buttonHeaderFontColor')}" data-edit="tinyd6.buttonHeaderFontColor">`)
-});
+});*/
 
-Hooks.on('renderChatLog', (app, html, data) => tinyChat.chatListeners(html))
+Hooks.on('renderChatMessage', (message, html) => tinyChat.chatListeners(message, html))
+
+//Hooks.on('renderChatLog', (app, html, data) => tinyChat.chatListeners(html))
 
 Hooks.on('refreshToken', () => {
 
